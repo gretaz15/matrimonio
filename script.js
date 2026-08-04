@@ -1,13 +1,13 @@
 /* ============================================================
-   Ivan & Sofia — comportamenti della pagina
+   Ivan & Greta — comportamenti della pagina
 
    ▼▼▼ MODIFICA SOLO QUESTO BLOCCO ▼▼▼
    ============================================================ */
 
 const CONFIG = {
   // Data e ora della cerimonia (anno, mese-1, giorno, ora, minuti).
-  // Attenzione: i mesi partono da 0, quindi giugno = 5.
-  dataMatrimonio: new Date(2027, 5, 12, 15, 30),
+  // Attenzione: i mesi partono da 0, quindi luglio = 6.
+  dataMatrimonio: new Date(2027, 6, 24, 15, 30),
 
   // Indirizzo dove ricevere le conferme.
   // Come ottenerlo è spiegato nel README, sezione "Modulo di conferma".

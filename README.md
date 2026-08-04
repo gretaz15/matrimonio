@@ -93,7 +93,7 @@ Per ogni invitato indicato nel menu «Quante persone» compare una scheda con no
 
 | Voce | A cosa serve |
 |---|---|
-| `dataMatrimonio` | Data e ora della cerimonia. **I mesi partono da 0**: giugno è `5`, settembre è `8`. |
+| `dataMatrimonio` | Data e ora della cerimonia. **I mesi partono da 0**: luglio è `6`, settembre è `8`. |
 | `endpointModulo` | L'indirizzo del punto 2. |
 | `tipoEndpoint` | `"formspree"` oppure `"apps-script"`. |
 | `maxInvitati` | Massimo di persone per gruppo. Se lo cambi, aggiorna anche le opzioni del menu in `index.html`. |
@@ -103,14 +103,45 @@ Per ogni invitato indicato nel menu «Quante persone» compare una scheda con no
 Da sostituire, in ordine di comparsa:
 
 - il `<title>` e le due `<meta>` di descrizione e anteprima;
-- **Ivan** e **Sofia** nell'apertura, nel monogramma `I&S` della barra e nel fondo pagina;
-- la data: sia il testo visibile sia l'attributo `datetime="2027-06-12"`;
+- i nomi nell'apertura, nel monogramma `I&G` della barra e nel fondo pagina;
+- la data: sia il testo visibile sia l'attributo `datetime="2027-07-24"`;
 - il nome e l'indirizzo della villa;
 - l'`src` della mappa: cerca il luogo su Google Maps, prendi le coordinate dall'URL e sostituisci `45.5769,9.5306`. Le stesse coordinate vanno nei tre link sotto la mappa (Google, Apple, Waze) — un cerca-e-sostituisci le prende tutte;
 - i quattro riquadri «In auto / In treno / Navetta / Dove dormire»: sono scritti su misura per un posto che non è il vostro, quindi vanno riscritti;
 - gli orari del programma;
 - nella sezione regali: intestatari, IBAN (in **due posti**: il testo e l'attributo `data-iban` del pulsante) e causale;
 - email e telefono nel fondo pagina, e l'indirizzo email che compare nel messaggio d'errore in `script.js`.
+
+### `style.css` — tema e motivo decorativo
+
+Il tema è **bosco di montagna**. Il motivo decorativo si cambia da `index.html`,
+sostituendo una sola parola nella classe del `<body>`:
+
+| Classe sul `<body>` | Cosa disegna |
+|---|---|
+| `tema-pigne` | pigne e rami d'abete *(predefinito)* |
+| `tema-creste` | una linea di creste innevate |
+| `tema-bosco` | pigne e funghi alternati |
+| `tema-scoiattolo` | pigne, più uno scoiattolo nel monogramma, in fondo al programma e nel fondo pagina |
+
+Il motivo compare in due punti: le bande divisorie fra le sezioni e la filigrana
+dietro l'apertura. Sono disegni a una tinta usati come maschera CSS, quindi il
+colore arriva dalla palette e non va toccato dentro l'SVG.
+
+I colori stanno tutti in `:root`, in cima al file:
+
+| Variabile | Uso |
+|---|---|
+| `--bosco-scuro` | fondi scuri: apertura e fondo pagina. Se lo cambi, cambia anche il `<meta name="theme-color">` in `index.html` |
+| `--bosco` | colore principale: bottoni, link, titoli piccoli |
+| `--nebbia` | il fondo carta della pagina |
+| `--oro` | oro larice, usato **solo** sui fondi scuri |
+| `--pigna` | bruno pigna, usato **solo** sui fondi chiari |
+| `--muschio` | verde muschio, per i messaggi di conferma |
+
+`--oro` e `--pigna` sono due accenti separati per una ragione: l'oro su fondo
+chiaro non ha contrasto sufficiente e il bruno su fondo scuro nemmeno. Se ne usi
+uno al posto dell'altro, il testo diventa poco leggibile.
 
 ### `img/`
 

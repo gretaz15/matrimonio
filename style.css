@@ -1,29 +1,59 @@
 /* ============================================================
-   Ivan & Sofia — foglio di stile
-   Palette: ceramica mediterranea (blu cobalto, calce, ocra, oliva)
+   Ivan & Greta — foglio di stile
+   Palette: bosco di montagna (verde abete, pigna, oro larice, muschio)
+
+   ▼▼▼ PER CAMBIARE MOTIVO DECORATIVO ▼▼▼
+   Il motivo si scelge con la classe sul <body> in index.html:
+     tema-pigne       pigne e rami d'abete   (predefinito)
+     tema-creste      creste di montagna
+     tema-bosco       pigne e funghi
+     tema-scoiattolo  pigne + lo scoiattolo come segno ricorrente
    ============================================================ */
 
 :root {
-  --inchiostro: #102A4E;
-  --cobalto: #2D5FA6;
-  --cobalto-tenue: #E4EBF5;
-  --calce: #FAF8F3;
-  --ocra: #D9A227;
-  --oliva: #6E7F5E;
+  /* ---- colori ---- */
+  --bosco-scuro: #1D3A2E;   /* fondi scuri: apertura, fondo pagina */
+  --bosco: #35604A;         /* colore principale: bottoni, link, titoli */
+  --bosco-tenue: #E2EBE3;   /* bordi e separatori leggeri */
+  --nebbia: #F7F4ED;        /* fondo pagina, carta */
+  --oro: #DFAE4A;           /* oro larice — solo su fondi scuri */
+  --pigna: #7A5334;         /* bruno pigna — accenti su fondi chiari */
+  --muschio: #6B7F5C;
   --bianco: #FFFFFF;
-  --testo: #1B2536;
-  --testo-tenue: #5A6577;
+  --testo: #202A23;
+  --testo-tenue: #56645A;
+  --bordo-campo: #C3D0C5;
+  --rosso: #A63A2B;
 
   --display: "Fraunces", Georgia, serif;
   --testo-font: "Manrope", system-ui, -apple-system, sans-serif;
 
   --max: 1140px;
-  --raggio: 4px;
-  --ombra: 0 18px 40px -24px rgba(16, 42, 78, .35);
+  --raggio: 6px;
+  --ombra: 0 18px 40px -24px rgba(29, 58, 46, .38);
 
-  /* motivo a piastrella usato nelle bande divisorie e nell'apertura */
-  --piastrella: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 44 44'%3E%3Cg fill='none' stroke='%232D5FA6' stroke-width='1.1'%3E%3Cpath d='M22 22Q22 9 31 9Q31 22 22 22Q22 35 13 35Q13 22 22 22Q22 9 13 9Q13 22 22 22Q22 35 31 35Q31 22 22 22'/%3E%3Cpath d='M0 0l4 4M44 0l-4 4M0 44l4-4M44 44l-4-4'/%3E%3C/g%3E%3C/svg%3E");
+  /* ---- i quattro motivi, come maschere ripetibili ----
+     Sono disegni a una sola tinta: il colore glielo dà il CSS,
+     quindi qui dentro non c'è nessun colore da cambiare. */
+
+  /* pigne e rami d'abete — la pigna è fatta di archi rivolti in basso,
+     che è ciò che la fa leggere come pigna e non come foglia */
+  --m-pigne: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='44'%3E%3Cg fill='none' stroke='%23000' stroke-width='1.15' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M16 5.5v3'/%3E%3Cpath d='M16 8.5c6 3.5 8.5 9 8.5 14.5S20.5 33.5 16 38c-4.5-4.5-8.5-9.5-8.5-15S10 12 16 8.5z'/%3E%3Cpath d='M9 15.5q7 5 14 0M8 21.5q8 5.5 16 0M9.5 27.5q6.5 5 13 0M12 33q4 4 8 0'/%3E%3Cpath d='M48 38V8'/%3E%3Cpath d='M48 12l-4-3M48 12l4-3M48 15.6l-4.8-3.4M48 15.6l4.8-3.4M48 19.2l-5.4-3.8M48 19.2l5.4-3.8M48 22.8l-6-4.2M48 22.8l6-4.2M48 26.4l-6.4-4.5M48 26.4l6.4-4.5M48 30l-6.8-4.8M48 30l6.8-4.8M48 33.6l-7-5M48 33.6l7-5'/%3E%3C/g%3E%3C/svg%3E");
+
+  /* creste di montagna, con la neve sulle due cime più alte */
+  --m-creste: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='44'%3E%3Cg fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath stroke-width='1.5' d='M0 40 10 22 18 30 30 10 44 32 52 26 62 36 74 16 84 28 96 34 106 30 120 40'/%3E%3Cpath stroke-width='1.2' d='M25.8 17l2.1 2 2.1-2 2.2 2 2.2-2M70.4 22l2.1 2 2.2-2 2.1 2 2.2-2'/%3E%3C/g%3E%3C/svg%3E");
+
+  /* pigne e funghi alternati */
+  --m-bosco: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='44'%3E%3Cg fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg stroke-width='1.15'%3E%3Cpath d='M16 5.5v3'/%3E%3Cpath d='M16 8.5c6 3.5 8.5 9 8.5 14.5S20.5 33.5 16 38c-4.5-4.5-8.5-9.5-8.5-15S10 12 16 8.5z'/%3E%3Cpath d='M9 15.5q7 5 14 0M8 21.5q8 5.5 16 0M9.5 27.5q6.5 5 13 0M12 33q4 4 8 0'/%3E%3Cpath d='M37 25q0-11 9.5-11T56 25'/%3E%3Cpath d='M37 25h19'/%3E%3Cpath d='M43 25v8.5q3.5 2.6 7 0V25'/%3E%3C/g%3E%3Cg stroke-width='2.8'%3E%3Cpath d='M43.4 19.8h.01M49.8 18.4h.01M46.6 22.4h.01'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+
+  /* selezione predefinita, sovrascritta dalla classe sul body */
+  --motivo: var(--m-pigne);
 }
+
+.tema-pigne      { --motivo: var(--m-pigne); }
+.tema-creste     { --motivo: var(--m-creste); }
+.tema-bosco      { --motivo: var(--m-bosco); }
+.tema-scoiattolo { --motivo: var(--m-pigne); }
 
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -31,7 +61,7 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  background: var(--calce);
+  background: var(--nebbia);
   color: var(--testo);
   font-family: var(--testo-font);
   font-size: 1.0625rem;
@@ -53,24 +83,29 @@ h1, h2, h3 {
 h2 { font-size: clamp(2rem, 4.6vw, 3.1rem); margin-bottom: .6rem; }
 h3 { font-size: 1.2rem; margin-bottom: .35rem; }
 
-a { color: var(--cobalto); }
+a { color: var(--bosco); }
 
 .salta-link {
   position: absolute;
   left: -9999px;
   top: 0;
   z-index: 100;
-  background: var(--inchiostro);
+  background: var(--bosco-scuro);
   color: var(--bianco);
   padding: .8rem 1.2rem;
   text-decoration: none;
 }
 .salta-link:focus { left: 0; }
 
+/* bruno pigna sui fondi chiari, oro larice su quelli scuri:
+   così l'anello di messa a fuoco resta visibile in entrambi i casi */
 :focus-visible {
-  outline: 2px solid var(--ocra);
+  outline: 2px solid var(--pigna);
   outline-offset: 3px;
 }
+.apertura :focus-visible,
+.sezione--scura :focus-visible,
+.fondo :focus-visible { outline-color: var(--oro); }
 
 /* ---------- elementi ricorrenti ---------- */
 
@@ -87,10 +122,10 @@ a { color: var(--cobalto); }
   font-weight: 700;
   letter-spacing: .22em;
   text-transform: uppercase;
-  color: var(--ocra);
+  color: var(--oro);
   margin: 0 0 1rem;
 }
-.sopratitolo--scuro { color: var(--cobalto); }
+.sopratitolo--scuro { color: var(--bosco); }
 
 .introduzione {
   font-size: 1.1rem;
@@ -98,7 +133,7 @@ a { color: var(--cobalto); }
   max-width: 58ch;
   margin: 0 0 2.5rem;
 }
-.introduzione--chiara { color: rgba(255, 255, 255, .78); }
+.introduzione--chiara { color: rgba(255, 255, 255, .8); }
 
 .bottone {
   display: inline-block;
@@ -109,28 +144,59 @@ a { color: var(--cobalto); }
   text-transform: uppercase;
   text-decoration: none;
   padding: .95rem 1.6rem;
-  border: 1px solid var(--cobalto);
+  border: 1px solid var(--bosco);
   border-radius: var(--raggio);
-  background: var(--cobalto);
+  background: var(--bosco);
   color: var(--bianco);
   cursor: pointer;
   transition: background .2s ease, color .2s ease, transform .2s ease;
 }
-.bottone:hover { background: var(--inchiostro); border-color: var(--inchiostro); transform: translateY(-1px); }
+.bottone:hover { background: var(--bosco-scuro); border-color: var(--bosco-scuro); transform: translateY(-1px); }
 
-.bottone--vuoto { background: transparent; color: var(--cobalto); }
-.bottone--vuoto:hover { background: var(--cobalto); color: var(--bianco); }
+.bottone--vuoto { background: transparent; color: var(--bosco); }
+.bottone--vuoto:hover { background: var(--bosco); color: var(--bianco); }
 
-.bottone--chiaro { background: var(--bianco); border-color: var(--bianco); color: var(--inchiostro); }
-.bottone--chiaro:hover { background: var(--ocra); border-color: var(--ocra); color: var(--inchiostro); }
+.bottone--chiaro { background: var(--bianco); border-color: var(--bianco); color: var(--bosco-scuro); }
+.bottone--chiaro:hover { background: var(--oro); border-color: var(--oro); color: var(--bosco-scuro); }
 
 .bottone--pieno { width: 100%; font-size: .9rem; padding: 1.1rem; }
 
+/* banda divisoria: il motivo fa da maschera, il colore arriva dal fondo */
 .banda {
   height: 44px;
-  background-image: var(--piastrella);
-  background-repeat: repeat-x;
-  opacity: .5;
+  background-color: var(--bosco);
+  opacity: .45;
+  -webkit-mask-image: var(--motivo);
+  mask-image: var(--motivo);
+  -webkit-mask-repeat: repeat-x;
+  mask-repeat: repeat-x;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+/* lo scoiattolo: nascosto, compare solo con la classe tema-scoiattolo */
+.scoiattolo { display: none; }
+.tema-scoiattolo .scoiattolo { display: block; }
+
+.scoiattolo--riga {
+  width: 44px;
+  height: 44px;
+  margin: 2.5rem auto 0;
+  color: var(--muschio);
+}
+.tema-scoiattolo .nav__monogramma .scoiattolo {
+  display: inline-block;
+  vertical-align: -.16em;
+  width: 1.15em;
+  height: 1.15em;
+  margin-left: .28em;
+  color: var(--pigna);
+}
+.scoiattolo--fondo {
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 1.4rem;
+  color: var(--oro);
 }
 
 /* ---------- navigazione ---------- */
@@ -139,9 +205,9 @@ a { color: var(--cobalto); }
   position: fixed;
   inset: 0 0 auto;
   z-index: 50;
-  background: rgba(250, 248, 243, .94);
+  background: rgba(247, 244, 237, .94);
   backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--cobalto-tenue);
+  border-bottom: 1px solid var(--bosco-tenue);
   transform: translateY(-100%);
   transition: transform .35s ease;
 }
@@ -160,11 +226,11 @@ a { color: var(--cobalto); }
 .nav__monogramma {
   font-family: var(--display);
   font-size: 1.35rem;
-  color: var(--inchiostro);
+  color: var(--bosco-scuro);
   text-decoration: none;
   letter-spacing: .02em;
 }
-.nav__monogramma span { color: var(--ocra); }
+.nav__monogramma span { color: var(--pigna); }
 
 .nav__menu { display: flex; gap: 1.6rem; }
 .nav__menu a {
@@ -173,11 +239,11 @@ a { color: var(--cobalto); }
   letter-spacing: .1em;
   text-transform: uppercase;
   text-decoration: none;
-  color: var(--inchiostro);
+  color: var(--bosco-scuro);
   padding: .3rem 0;
   border-bottom: 1px solid transparent;
 }
-.nav__menu a:hover, .nav__menu a.attivo { border-bottom-color: var(--ocra); }
+.nav__menu a:hover, .nav__menu a.attivo { border-bottom-color: var(--pigna); }
 
 .nav__toggle {
   display: none;
@@ -190,33 +256,38 @@ a { color: var(--cobalto); }
   font-weight: 700;
   letter-spacing: .12em;
   text-transform: uppercase;
-  color: var(--inchiostro);
+  color: var(--bosco-scuro);
   cursor: pointer;
   padding: .4rem 0;
 }
 .nav__toggle-barre {
   width: 22px; height: 9px;
-  border-top: 2px solid var(--inchiostro);
-  border-bottom: 2px solid var(--inchiostro);
+  border-top: 2px solid var(--bosco-scuro);
+  border-bottom: 2px solid var(--bosco-scuro);
 }
 
 /* ---------- apertura ---------- */
 
 .apertura {
-  background: var(--inchiostro);
+  background: var(--bosco-scuro);
   color: var(--bianco);
   padding: clamp(4.5rem, 12vh, 7.5rem) 1.5rem 0;
   text-align: center;
   position: relative;
   overflow: hidden;
 }
+/* il motivo in filigrana, in crema chiarissimo sul verde scuro */
 .apertura::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: var(--piastrella);
-  opacity: .16;
+  background-color: var(--nebbia);
+  opacity: .13;
   pointer-events: none;
+  -webkit-mask-image: var(--motivo);
+  mask-image: var(--motivo);
+  -webkit-mask-repeat: repeat;
+  mask-repeat: repeat;
 }
 .apertura__contenuto { position: relative; max-width: 820px; margin: 0 auto; }
 
@@ -232,7 +303,7 @@ a { color: var(--cobalto); }
 .apertura__e {
   font-style: italic;
   font-size: .42em;
-  color: var(--ocra);
+  color: var(--oro);
   margin: .1em 0;
 }
 
@@ -245,7 +316,7 @@ a { color: var(--cobalto); }
   margin: 1.8rem 0 .4rem;
 }
 .apertura__luogo {
-  color: rgba(255, 255, 255, .7);
+  color: rgba(255, 255, 255, .72);
   margin: 0 0 2.4rem;
   font-size: .98rem;
 }
@@ -270,7 +341,7 @@ a { color: var(--cobalto); }
   font-size: .68rem;
   letter-spacing: .18em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, .62);
+  color: rgba(255, 255, 255, .64);
   margin-top: .5rem;
 }
 
@@ -288,7 +359,7 @@ a { color: var(--cobalto); }
   aspect-ratio: 4 / 5;
   overflow: hidden;
   border-radius: var(--raggio);
-  background: var(--cobalto-tenue);
+  background: var(--bosco-tenue);
   box-shadow: var(--ombra);
 }
 .foto--alta { aspect-ratio: 4 / 6; }
@@ -297,7 +368,7 @@ a { color: var(--cobalto); }
 .foto--vuota {
   display: grid;
   place-items: center;
-  background: repeating-linear-gradient(135deg, #dbe4f1 0 12px, #e8eef7 12px 24px);
+  background: repeating-linear-gradient(135deg, #DCE5DD 0 12px, #EAF0EA 12px 24px);
 }
 .foto--vuota img { display: none; }
 .foto--vuota::after {
@@ -306,14 +377,14 @@ a { color: var(--cobalto); }
   font-weight: 700;
   letter-spacing: .14em;
   text-transform: uppercase;
-  color: var(--cobalto);
+  color: var(--bosco);
 }
 
 /* ---------- sezioni ---------- */
 
 .sezione { padding: clamp(5rem, 11vw, 8rem) 0; }
 .sezione--chiara { background: var(--bianco); }
-.sezione--scura { background: var(--cobalto); color: var(--bianco); }
+.sezione--scura { background: var(--bosco); color: var(--bianco); }
 .sezione--scura h2 { color: var(--bianco); }
 
 /* la sezione dopo la galleria in overflow ha bisogno di aria in più */
@@ -325,20 +396,20 @@ a { color: var(--cobalto); }
   list-style: none;
   margin: 0;
   padding: 0;
-  border-top: 1px solid var(--cobalto-tenue);
+  border-top: 1px solid var(--bosco-tenue);
 }
 .tappa {
   display: grid;
   grid-template-columns: 6.5rem 1fr;
   gap: 1.5rem;
   padding: 1.7rem 0;
-  border-bottom: 1px solid var(--cobalto-tenue);
+  border-bottom: 1px solid var(--bosco-tenue);
 }
 .tappa__ora {
   font-family: var(--display);
   font-size: 1.5rem;
   font-weight: 300;
-  color: var(--cobalto);
+  color: var(--bosco);
   font-variant-numeric: tabular-nums;
 }
 .tappa__testo p { margin: 0; color: var(--testo-tenue); }
@@ -347,7 +418,7 @@ a { color: var(--cobalto); }
 
 .mappa {
   aspect-ratio: 16 / 9;
-  border: 1px solid var(--cobalto-tenue);
+  border: 1px solid var(--bosco-tenue);
   border-radius: var(--raggio);
   overflow: hidden;
   box-shadow: var(--ombra);
@@ -367,21 +438,20 @@ a { color: var(--cobalto); }
   gap: 1.5rem;
 }
 .scheda {
-  background: var(--calce);
-  border: 1px solid var(--cobalto-tenue);
+  background: var(--nebbia);
+  border: 1px solid var(--bosco-tenue);
   border-radius: var(--raggio);
   padding: 1.6rem;
 }
 .scheda p { margin: 0 0 .8rem; font-size: .98rem; color: var(--testo-tenue); }
 .scheda p:last-child { margin-bottom: 0; }
 .scheda b { color: var(--testo); }
-.sezione--chiara .scheda { background: var(--calce); }
 
 /* ---------- modulo ---------- */
 
 .modulo {
   background: var(--bianco);
-  border: 1px solid var(--cobalto-tenue);
+  border: 1px solid var(--bosco-tenue);
   border-radius: var(--raggio);
   padding: clamp(1.5rem, 4vw, 2.5rem);
   box-shadow: var(--ombra);
@@ -401,7 +471,7 @@ a { color: var(--cobalto); }
   letter-spacing: .04em;
   margin-bottom: .5rem;
   padding: 0;
-  color: var(--inchiostro);
+  color: var(--bosco-scuro);
 }
 .campo__facoltativo {
   font-weight: 500;
@@ -425,22 +495,22 @@ a { color: var(--cobalto); }
   font-size: 1rem;
   color: var(--testo);
   padding: .8rem .9rem;
-  background: var(--calce);
-  border: 1px solid #C9D4E4;
+  background: var(--nebbia);
+  border: 1px solid var(--bordo-campo);
   border-radius: var(--raggio);
 }
 .campo textarea { resize: vertical; }
 
 .campo input:focus, .campo select:focus, .campo textarea:focus {
-  outline: 2px solid var(--cobalto);
+  outline: 2px solid var(--bosco);
   outline-offset: 0;
   background: var(--bianco);
 }
 
 .campo input[aria-invalid="true"],
 .campo textarea[aria-invalid="true"] {
-  border-color: #B4342B;
-  background: #FDF3F2;
+  border-color: var(--rosso);
+  background: #FCF3F1;
 }
 
 .errore {
@@ -448,7 +518,7 @@ a { color: var(--cobalto); }
   font-size: .85rem;
   font-weight: 500;
   letter-spacing: 0;
-  color: #B4342B;
+  color: var(--rosso);
   margin-top: .4rem;
 }
 
@@ -459,33 +529,33 @@ a { color: var(--cobalto); }
   gap: .55rem;
   margin: 0 !important;
   padding: .7rem 1rem;
-  border: 1px solid #C9D4E4;
+  border: 1px solid var(--bordo-campo);
   border-radius: var(--raggio);
-  background: var(--calce);
+  background: var(--nebbia);
   cursor: pointer;
   font-size: .95rem;
   font-weight: 500 !important;
   letter-spacing: 0 !important;
 }
 .scelta:has(input:checked) {
-  border-color: var(--cobalto);
-  background: var(--cobalto-tenue);
+  border-color: var(--bosco);
+  background: var(--bosco-tenue);
 }
-.scelta input { accent-color: var(--cobalto); width: 1.05rem; height: 1.05rem; }
+.scelta input { accent-color: var(--bosco); width: 1.05rem; height: 1.05rem; }
 
 /* schede invitato generate dal numero di persone */
 .invitato {
-  border: 1px solid var(--cobalto-tenue);
-  border-left: 3px solid var(--ocra);
+  border: 1px solid var(--bosco-tenue);
+  border-left: 3px solid var(--pigna);
   border-radius: var(--raggio);
   padding: 1.3rem;
   margin: 0 0 1rem;
-  background: var(--calce);
+  background: var(--nebbia);
 }
 .invitato__titolo {
   font-family: var(--display);
   font-size: 1.05rem;
-  color: var(--inchiostro);
+  color: var(--bosco-scuro);
   margin: 0 0 1rem;
 }
 .invitato .campo:last-child { margin-bottom: 0; }
@@ -496,13 +566,13 @@ a { color: var(--cobalto); }
   font-size: .78rem;
   font-weight: 500;
   padding: .35rem .7rem;
-  border: 1px dashed var(--cobalto);
+  border: 1px dashed var(--pigna);
   border-radius: 100px;
   background: transparent;
-  color: var(--cobalto);
+  color: var(--pigna);
   cursor: pointer;
 }
-.rapida:hover { background: var(--cobalto); color: var(--bianco); border-style: solid; }
+.rapida:hover { background: var(--pigna); color: var(--bianco); border-style: solid; }
 
 .modulo__esito {
   margin: 0 0 1.2rem;
@@ -510,8 +580,8 @@ a { color: var(--cobalto); }
   border-radius: var(--raggio);
   font-size: .95rem;
 }
-.modulo__esito--ok { background: #EAF3EA; border: 1px solid var(--oliva); color: #33452B; }
-.modulo__esito--ko { background: #FDF3F2; border: 1px solid #B4342B; color: #7E241D; }
+.modulo__esito--ok { background: #ECF2E9; border: 1px solid var(--muschio); color: #2F4227; }
+.modulo__esito--ko { background: #FCF3F1; border: 1px solid var(--rosso); color: #76251B; }
 
 /* ---------- regali ---------- */
 
@@ -526,7 +596,7 @@ a { color: var(--cobalto); }
   font-weight: 700;
   letter-spacing: .18em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, .65);
+  color: rgba(255, 255, 255, .68);
   margin: 1.4rem 0 .2rem;
 }
 .iban__etichetta:first-child { margin-top: 0; }
@@ -544,14 +614,14 @@ a { color: var(--cobalto); }
   font-weight: 700;
   letter-spacing: .12em;
   text-transform: uppercase;
-  color: var(--ocra);
+  color: var(--oro);
 }
 
 /* ---------- fondo pagina ---------- */
 
 .fondo {
-  background: var(--inchiostro);
-  color: rgba(255, 255, 255, .72);
+  background: var(--bosco-scuro);
+  color: rgba(255, 255, 255, .75);
   text-align: center;
   padding: 4rem 0;
   font-size: .95rem;
@@ -565,7 +635,7 @@ a { color: var(--cobalto); }
   margin-bottom: .8rem;
 }
 .fondo__contatti { margin-top: 1.4rem; }
-.fondo a { color: var(--ocra); }
+.fondo a { color: var(--oro); }
 
 /* ---------- comparsa allo scorrimento ---------- */
 
@@ -586,12 +656,12 @@ a { color: var(--cobalto); }
     inset: 100% 0 auto;
     flex-direction: column;
     gap: 0;
-    background: var(--calce);
-    border-bottom: 1px solid var(--cobalto-tenue);
+    background: var(--nebbia);
+    border-bottom: 1px solid var(--bosco-tenue);
     padding: .5rem 1.5rem 1.2rem;
   }
   .nav__menu.nav__menu--aperto { display: flex; }
-  .nav__menu a { padding: .85rem 0; border-bottom: 1px solid var(--cobalto-tenue); }
+  .nav__menu a { padding: .85rem 0; border-bottom: 1px solid var(--bosco-tenue); }
   .nav__menu a:last-child { border-bottom: 0; }
 
   .galleria { grid-template-columns: 1fr 1fr; }
