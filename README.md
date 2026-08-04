@@ -105,10 +105,10 @@ Da sostituire, in ordine di comparsa:
 - il `<title>` e le due `<meta>` di descrizione e anteprima;
 - i nomi nell'apertura, nel monogramma `I&G` della barra e nel fondo pagina;
 - la data: sia il testo visibile sia l'attributo `datetime="2027-07-24"`;
-- il nome e l'indirizzo della villa;
-- l'`src` della mappa: cerca il luogo su Google Maps, prendi le coordinate dall'URL e sostituisci `45.5769,9.5306`. Le stesse coordinate vanno nei tre link sotto la mappa (Google, Apple, Waze) — un cerca-e-sostituisci le prende tutte;
-- i quattro riquadri «In auto / In treno / Navetta / Dove dormire»: sono scritti su misura per un posto che non è il vostro, quindi vanno riscritti;
-- gli orari del programma;
+- i due blocchi `.luogo` della sezione «I luoghi», uno per sede: titolo, orario, indirizzo, mappa e i tre pulsanti di navigazione. Le mappe e i pulsanti funzionano **per indirizzo**, non per coordinate: dentro gli URL c'è l'indirizzo scritto per esteso, quindi per cambiare sede basta sostituire quello (ricordando di scriverlo in forma URL: spazio `%20` nell'`src` dell'iframe, `+` nei link, `à` `%C3%A0`). Se una sede non venisse trovata da Maps, ripiega sulle coordinate: `?q=46.1234,8.4567`;
+- i tre riquadri della sezione «Dove parcheggiare». Questi funzionano **per coordinate**, non per indirizzo, perché un piazzale di montagna spesso non ha un civico: su Google Maps da computer fai click destro sul punto esatto, la prima voce del menu sono le coordinate, e le incolli dopo `destination=`. Per aggiungere o togliere un parcheggio, duplica o cancella un intero blocco `<article class="parcheggio">`: la griglia si riadatta da sola;
+- i cinque riquadri «In auto / In treno / Fra i due luoghi / Dove dormire / Cosa portare»;
+- gli orari del programma, che vanno tenuti d'accordo con `dataMatrimonio` in `script.js`: il countdown punta all'ora della cerimonia;
 - nella sezione regali: intestatari, IBAN (in **due posti**: il testo e l'attributo `data-iban` del pulsante) e causale;
 - email e telefono nel fondo pagina, e l'indirizzo email che compare nel messaggio d'errore in `script.js`.
 

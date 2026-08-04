@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ivan & Greta · 24 luglio 2027</title>
-<meta name="description" content="Ci sposiamo il 24 luglio 2027 a Villa Castelbarco, Vaprio d'Adda. Qui trovi come arrivare, il programma della giornata e il modulo per confermare la presenza.">
+<meta name="description" content="Ci sposiamo il 24 luglio 2027 a Toceno, in Val Vigezzo. Qui trovi come arrivare, il programma della giornata e il modulo per confermare la presenza.">
 <meta name="theme-color" content="#1D3A2E">
 
 <!-- Anteprima quando il link viene condiviso su WhatsApp / social -->
@@ -24,7 +24,7 @@
      tema-creste      creste di montagna
      tema-bosco       pigne e funghi
      tema-scoiattolo  pigne, più lo scoiattolo in tre punti della pagina -->
-<body class="tema-pigne">
+<body class="tema-bosco">
 
 <a class="salta-link" href="#conferma">Vai al modulo di conferma</a>
 
@@ -50,16 +50,19 @@
   <!-- ============ APERTURA ============ -->
   <section class="apertura">
     <div class="apertura__contenuto">
-      <p class="sopratitolo">Ci sposiamo</p>
+      <p class="sopratitolo sopratitolo--apertura">Ci sposiamo</p>
       <h1 class="apertura__nomi">
         <span>Ivan</span>
         <span class="apertura__e" aria-hidden="true">&amp;</span>
         <span>Greta</span>
       </h1>
-      <p class="apertura__data">
-        <time datetime="2027-07-24">Sabato 24 luglio 2027</time>
-      </p>
-      <p class="apertura__luogo">Villa Castelbarco · Vaprio d'Adda (MI)</p>
+
+      <div class="apertura__quando">
+        <p class="apertura__data">
+          <time datetime="2027-07-24">Sabato 24 luglio 2027</time>
+        </p>
+        <p class="apertura__luogo">Toceno · Val Vigezzo (VB)</p>
+      </div>
 
       <div class="conto" aria-live="polite">
         <div class="conto__blocco"><b id="cdGiorni">—</b><span>giorni</span></div>
@@ -91,42 +94,58 @@
     <div class="contenitore">
       <p class="sopratitolo sopratitolo--scuro">Il programma</p>
       <h2>Come si svolge la giornata</h2>
-      <p class="introduzione">Tutto si tiene nello stesso posto: una volta arrivati, non serve spostarsi. Gli orari sono indicativi, tranne quello della cerimonia.</p>
+      <p class="introduzione">Si comincia la mattina e si finisce prima di cena. La cerimonia è in centro a Toceno, il resto della giornata più in alto in località Promezzo: l'unico momento in cui ci si sposta è a metà mattina, subito dopo il Comune. Gli orari sono indicativi, tranne quello della cerimonia.</p>
 
+      <!-- DA CONTROLLARE: 10:30 e 11:00 sono quelli che ci avete dato; da lì in poi
+           sono una proposta ragionevole, aggiustateli sui tempi veri del catering -->
       <ol class="programma">
         <li class="tappa">
-          <span class="tappa__ora">15:00</span>
+          <span class="tappa__ora">10:30</span>
           <div class="tappa__testo">
-            <h3>Arrivo degli ospiti</h3>
-            <p>Vi aspettiamo nel giardino all'ingresso. C'è acqua fresca e ombra: prendetevi il tempo per salutare tutti.</p>
+            <h3>Ritrovo in piazza</h3>
+            <p>Ci troviamo tutti in Piazza della Chiesa, davanti al Comune. Mezz'ora di margine per parcheggiare con calma e salutarsi.</p>
           </div>
         </li>
         <li class="tappa">
-          <span class="tappa__ora">15:30</span>
+          <span class="tappa__ora">11:00</span>
           <div class="tappa__testo">
-            <h3>Cerimonia</h3>
-            <p>Nel chiostro della villa. Questo è l'unico orario da rispettare, quindi arrivate con qualche minuto di margine.</p>
+            <h3>Cerimonia in sala comunale</h3>
+            <p>Nella sala del Comune di Toceno. Questo è l'unico orario da rispettare, quindi arrivate con qualche minuto di margine.</p>
           </div>
         </li>
         <li class="tappa">
-          <span class="tappa__ora">17:00</span>
+          <span class="tappa__ora">11:45</span>
           <div class="tappa__testo">
-            <h3>Aperitivo nel parco</h3>
-            <p>Musica dal vivo e foto di gruppo. Il prato è morbido: se portate tacchi sottili, mettete in borsa un cambio.</p>
+            <h3>Si sale a Promezzo</h3>
+            <p>Ci spostiamo alla sede degli Alpini, un centinaio di metri più in alto. La strada è stretta e in salita: si sale in colonna, senza fretta, e nessuno resta a piedi.</p>
           </div>
         </li>
         <li class="tappa">
-          <span class="tappa__ora">19:30</span>
+          <span class="tappa__ora">12:30</span>
           <div class="tappa__testo">
-            <h3>Cena</h3>
-            <p>Nella limonaia. I posti sono assegnati e i menù tengono conto delle allergie che ci segnalate nel modulo.</p>
+            <h3>Aperitivo all'aperto</h3>
+            <p>Siamo a 1000 metri, con la valle davanti. Il terreno è prato e ghiaino: se portate tacchi sottili, mettete in borsa un cambio.</p>
           </div>
         </li>
         <li class="tappa">
-          <span class="tappa__ora">23:00</span>
+          <span class="tappa__ora">13:30</span>
           <div class="tappa__testo">
-            <h3>Torta e festa</h3>
-            <p>Si balla fino a tardi. Chi vuole andare via prima trova sempre qualcuno pronto a un passaggio.</p>
+            <h3>Pranzo</h3>
+            <p>I posti sono assegnati e i menù tengono conto delle allergie che ci segnalate nel modulo.</p>
+          </div>
+        </li>
+        <li class="tappa">
+          <span class="tappa__ora">16:30</span>
+          <div class="tappa__testo">
+            <h3>Torta e musica</h3>
+            <p>Il pomeriggio scorre lento, con la valle davanti. Nessuno ha fretta di andare via.</p>
+          </div>
+        </li>
+        <li class="tappa">
+          <span class="tappa__ora">18:30</span>
+          <div class="tappa__testo">
+            <h3>Ci salutiamo</h3>
+            <p>La festa finisce prima di cena, con ancora la luce buona per scendere in valle.</p>
           </div>
         </li>
       </ol>
@@ -138,43 +157,121 @@
   <!-- ============ LUOGO E INDICAZIONI ============ -->
   <section class="sezione sezione--chiara" id="luogo">
     <div class="contenitore">
-      <p class="sopratitolo sopratitolo--scuro">Il luogo</p>
-      <h2>Villa Castelbarco</h2>
-      <p class="introduzione">Via Castelbarco 3, 20069 Vaprio d'Adda (MI)<br>A 35 km da Milano, 25 km da Bergamo.</p>
+      <p class="sopratitolo sopratitolo--scuro">I luoghi</p>
+      <h2>Toceno, Val Vigezzo</h2>
+      <p class="introduzione">Due punti dello stesso paese, in provincia di Verbania, a un passo dal confine svizzero. Si arriva da Domodossola risalendo la Valle Vigezzo.</p>
 
-      <div class="mappa">
-        <iframe
-          src="https://maps.google.com/maps?q=45.5769,9.5306&hl=it&z=15&output=embed"
-          title="Mappa di Villa Castelbarco a Vaprio d'Adda"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          allowfullscreen></iframe>
+      <div class="luogo">
+        <h3 class="luogo__titolo"><span class="luogo__quando">Ore 11:00 · la cerimonia</span>Comune di Toceno</h3>
+        <p class="luogo__indirizzo">Piazza della Chiesa 1, 28858 Toceno (VB) · 907 m di quota</p>
+
+        <div class="mappa">
+          <iframe
+            src="https://maps.google.com/maps?q=Piazza%20della%20Chiesa%201,%2028858%20Toceno%20VB&hl=it&z=16&output=embed"
+            title="Mappa del Comune di Toceno, Piazza della Chiesa"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen></iframe>
+        </div>
+
+        <div class="mappa__azioni">
+          <a class="bottone" href="https://www.google.com/maps/dir/?api=1&destination=Piazza+della+Chiesa+1,+28858+Toceno+VB" target="_blank" rel="noopener">Indicazioni con Google Maps</a>
+          <a class="bottone bottone--vuoto" href="https://maps.apple.com/?daddr=Piazza+della+Chiesa+1,+28858+Toceno+VB&dirflg=d" target="_blank" rel="noopener">Apri in Apple Mappe</a>
+          <a class="bottone bottone--vuoto" href="https://waze.com/ul?q=Piazza%20della%20Chiesa%201%20Toceno%20VB&navigate=yes" target="_blank" rel="noopener">Apri in Waze</a>
+        </div>
       </div>
 
-      <div class="mappa__azioni">
-        <a class="bottone" href="https://www.google.com/maps/dir/?api=1&destination=45.5769,9.5306" target="_blank" rel="noopener">Indicazioni con Google Maps</a>
-        <a class="bottone bottone--vuoto" href="https://maps.apple.com/?daddr=45.5769,9.5306&dirflg=d" target="_blank" rel="noopener">Apri in Apple Mappe</a>
-        <a class="bottone bottone--vuoto" href="https://waze.com/ul?ll=45.5769,9.5306&navigate=yes" target="_blank" rel="noopener">Apri in Waze</a>
+      <div class="luogo">
+        <h3 class="luogo__titolo"><span class="luogo__quando">Dalle 12:00 · il ricevimento</span>Alpini di Toceno, località Promezzo</h3>
+        <p class="luogo__indirizzo">Località Promezzo 111, 28858 Toceno (VB) · 1010 m di quota</p>
+
+        <div class="mappa">
+          <iframe
+            src="https://maps.google.com/maps?q=Localit%C3%A0%20Promezzo%20111,%2028858%20Toceno%20VB&hl=it&z=15&output=embed"
+            title="Mappa della sede degli Alpini in località Promezzo, Toceno"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen></iframe>
+        </div>
+
+        <div class="mappa__azioni">
+          <a class="bottone" href="https://www.google.com/maps/dir/?api=1&destination=Localit%C3%A0+Promezzo+111,+28858+Toceno+VB" target="_blank" rel="noopener">Indicazioni con Google Maps</a>
+          <a class="bottone bottone--vuoto" href="https://maps.apple.com/?daddr=Localit%C3%A0+Promezzo+111,+28858+Toceno+VB&dirflg=d" target="_blank" rel="noopener">Apri in Apple Mappe</a>
+          <a class="bottone bottone--vuoto" href="https://waze.com/ul?q=Promezzo%20Toceno%20VB&navigate=yes" target="_blank" rel="noopener">Apri in Waze</a>
+        </div>
+      </div>
+
+      <!-- ============ PARCHEGGI ============
+           I pulsanti puntano a coordinate esatte, non a indirizzi: un piazzale
+           in montagna spesso non ha un civico, e Maps mandarebbe altrove.
+
+           COME PRENDERE LE COORDINATE
+           1. apri Google Maps sul computer e vai sul punto esatto;
+           2. click destro sul punto → la prima voce del menu sono le coordinate
+              (es. 46.145678, 8.472345): cliccandola le copi;
+           3. incollale qui sotto al posto di 00.000000,0.000000, cioè dopo
+              `destination=`, senza spazi e con il punto come separatore
+              decimale (la virgola serve solo a dividere le due coordinate).
+
+           Per aggiungere un parcheggio, copia un intero blocco <article>.
+           Per togliere una voce, cancella il suo <article>: la griglia si
+           riadatta da sola a due o quattro riquadri. -->
+      <div class="parcheggi">
+        <h3 class="parcheggi__titolo">Dove parcheggiare</h3>
+        <p class="parcheggi__nota">Ogni pulsante apre il punto esatto, non il centro del paese: seguitelo fino in fondo e vi porta dentro il piazzale. Le strade di Toceno sono strette, quindi conviene lasciare l'auto nei punti qui sotto e non lungo la via.</p>
+
+        <div class="parcheggi__griglia">
+          <article class="parcheggio">
+            <p class="parcheggio__dove">Per la cerimonia</p>
+            <h4 class="parcheggio__nome">Parcheggio della piazza</h4>
+            <p class="parcheggio__nota">DA COMPLETARE: quanti posti, e quanti minuti a piedi dal Comune.</p>
+            <a class="bottone bottone--vuoto" href="https://www.google.com/maps/dir/?api=1&destination=00.000000,0.000000" target="_blank" rel="noopener">Portami qui</a>
+          </article>
+
+          <article class="parcheggio">
+            <p class="parcheggio__dove">Per la cerimonia</p>
+            <h4 class="parcheggio__nome">Secondo parcheggio</h4>
+            <p class="parcheggio__nota">DA COMPLETARE: da usare se il primo è pieno.</p>
+            <a class="bottone bottone--vuoto" href="https://www.google.com/maps/dir/?api=1&destination=00.000000,0.000000" target="_blank" rel="noopener">Portami qui</a>
+          </article>
+
+          <article class="parcheggio">
+            <p class="parcheggio__dove">Per il ricevimento</p>
+            <h4 class="parcheggio__nome">Promezzo, sede degli Alpini</h4>
+            <p class="parcheggio__nota">DA COMPLETARE: dove si lascia l'auto una volta arrivati a Promezzo.</p>
+            <a class="bottone bottone--vuoto" href="https://www.google.com/maps/dir/?api=1&destination=00.000000,0.000000" target="_blank" rel="noopener">Portami qui</a>
+          </article>
+        </div>
       </div>
 
       <div class="griglia-info">
         <article class="scheda">
           <h3>In auto</h3>
-          <p>Dalla A4 uscita <b>Capriate</b>, poi SP170 verso Vaprio d'Adda: 10 minuti. Dalla Tangenziale Est di Milano prendete la SP2 direzione Cassano d'Adda.</p>
-          <p><b>Parcheggio:</b> gratuito e custodito dentro la proprietà, 120 posti. L'ingresso carrabile è il secondo cancello, quello con il pilastro in mattoni.</p>
+          <p>Autostrada <b>A26</b> fino a <b>Gravellona Toce</b>, poi la <b>SS33 del Sempione</b> verso Domodossola. Da lì si prende la <b>SS337 della Valle Vigezzo</b> e si risale fino a Toceno.</p>
+          <p>Per il ricevimento si continua a salire oltre il paese, verso <b>Arvogno</b>, fino a Promezzo: da Domodossola sono 18 km in tutto.</p>
+          <p><b>Parcheggio:</b> i punti esatti sono qui sopra, con il link per la navigazione.</p>
         </article>
         <article class="scheda">
           <h3>In treno</h3>
-          <p>Linea <b>S11 Milano–Bergamo</b>, fermata <b>Pozzo d'Adda–Trezzano Rosa</b> (35 minuti da Milano Centrale). Dalla stazione alla villa ci sono 3 km.</p>
-          <p>I taxi non stazionano in zona: se arrivate in treno, scrivetelo nel modulo e vi organizziamo un passaggio.</p>
+          <p>Prima fino a <b>Domodossola</b>, poi il trenino della <b>Ferrovia Vigezzina-Centovalli</b> in direzione Locarno.</p>
+          <p>Toceno non ha una fermata: si scende a <b>Santa Maria Maggiore</b>, che è a 2 km dal paese. Se arrivate in treno scrivetelo nel modulo, così vi veniamo a prendere.</p>
         </article>
         <article class="scheda">
-          <h3>Navetta da Milano</h3>
-          <p>Partenza alle <b>14:00</b> da Piazza Cinque Giornate, ritorno alle <b>00:30</b> e alle <b>02:00</b>. Il posto va prenotato nel modulo di conferma.</p>
+          <h3>Fra i due luoghi</h3>
+          <!-- DA COMPLETARE: decidete se organizzate una navetta per la salita e per il rientro -->
+          <p>Da Piazza della Chiesa a Promezzo si sale in pochi minuti d'auto, subito dopo la cerimonia. Chi è senza mezzo non deve preoccuparsi: ci si organizza sul posto e ci sono posti in macchina per tutti.</p>
+          <p>Stiamo valutando una navetta per la salita e per il rientro: appena è deciso lo scriviamo qui.</p>
         </article>
         <article class="scheda">
           <h3>Dove dormire</h3>
-          <p>Abbiamo tenuto delle camere convenzionate all'<b>Hotel Adda</b> di Trezzo sull'Adda (4 km): citate "matrimonio Ivan e Greta" quando prenotate.</p>
+          <!-- DA COMPLETARE: nomi delle strutture e se avete tenuto camere convenzionate -->
+          <p>La base più comoda è <b>Santa Maria Maggiore</b>, il centro principale della valle, a pochi minuti da Toceno: ci sono alberghi e appartamenti.</p>
+          <p>Stiamo raccogliendo qualche indirizzo e delle camere convenzionate: trovate l'elenco qui appena pronto.</p>
+        </article>
+        <article class="scheda">
+          <h3>Cosa portare</h3>
+          <p>Siamo tra i 900 e i 1000 metri e la giornata è quasi tutta all'aperto, nelle ore in cui il sole picchia di più: a quest'altitudine scalda molto più che in pianura. <b>Occhiali, cappello e crema solare</b> servono davvero.</p>
+          <p>Verso le sei di sera, quando ci salutiamo, la temperatura è già scesa: una giacca leggera in auto non guasta. Il terreno è prato e ghiaino, quindi meglio scarpe che stiano in piedi da sole.</p>
         </article>
       </div>
     </div>
@@ -301,7 +398,7 @@
   <div class="contenitore">
     <svg class="scoiattolo scoiattolo--fondo" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M23 42C8 40 4 22 12 13 14.5 10 18 8 19 10.5" fill="none" stroke="currentColor" stroke-width="8.5" stroke-linecap="round"/><ellipse cx="29" cy="31.5" rx="8.5" ry="11" fill="currentColor"/><ellipse cx="34" cy="41.8" rx="5.2" ry="2.5" fill="currentColor"/><circle cx="34" cy="16.5" r="7" fill="currentColor"/><ellipse cx="39.5" cy="19" rx="3.2" ry="2.3" fill="currentColor"/><path d="M30 11.5 29.4 5.4 34.8 8.6z" fill="currentColor"/><circle cx="36.5" cy="14.8" r="1.4" fill="var(--nebbia)"/></svg>
     <p class="fondo__nomi">Ivan &amp; Greta</p>
-    <p>24 luglio 2027 · Villa Castelbarco, Vaprio d'Adda</p>
+    <p>24 luglio 2027 · Toceno, Val Vigezzo</p>
     <p class="fondo__contatti">
       Per qualsiasi dubbio: <a href="mailto:ivangreta@example.com">ivangreta@example.com</a> · <a href="tel:+390000000000">+39 000 000 0000</a>
     </p>
