@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ivan & Sofia · 12 giugno 2027</title>
+<meta name="description" content="Ci sposiamo il 12 giugno 2027 a Villa Castelbarco, Vaprio d'Adda. Qui trovi come arrivare, il programma della giornata e il modulo per confermare la presenza.">
+<meta name="theme-color" content="#102A4E">
+
+<!-- Anteprima quando il link viene condiviso su WhatsApp / social -->
+<meta property="og:title" content="Ivan & Sofia · 12 giugno 2027">
+<meta property="og:description" content="Ci sposiamo! Conferma la tua presenza entro il 30 aprile 2027.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="img/foto-1.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a class="salta-link" href="#conferma">Vai al modulo di conferma</a>
+
+<!-- ============ NAVIGAZIONE ============ -->
+<header class="nav" id="nav">
+  <div class="nav__interno">
+    <a class="nav__monogramma" href="#top" aria-label="Torna all'inizio">I<span>&amp;</span>S</a>
+    <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">
+      <span class="nav__toggle-barre" aria-hidden="true"></span>
+      <span class="nav__toggle-testo">Menu</span>
+    </button>
+    <nav class="nav__menu" id="navMenu" aria-label="Sezioni del sito">
+      <a href="#giornata">La giornata</a>
+      <a href="#luogo">Come arrivare</a>
+      <a href="#conferma">Conferma la presenza</a>
+      <a href="#regali">Regali</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ APERTURA ============ -->
+  <section class="apertura">
+    <div class="apertura__contenuto">
+      <p class="sopratitolo">Ci sposiamo</p>
+      <h1 class="apertura__nomi">
+        <span>Ivan</span>
+        <span class="apertura__e" aria-hidden="true">&amp;</span>
+        <span>Sofia</span>
+      </h1>
+      <p class="apertura__data">
+        <time datetime="2027-06-12">Sabato 12 giugno 2027</time>
+      </p>
+      <p class="apertura__luogo">Villa Castelbarco · Vaprio d'Adda (MI)</p>
+
+      <div class="conto" aria-live="polite">
+        <div class="conto__blocco"><b id="cdGiorni">—</b><span>giorni</span></div>
+        <div class="conto__blocco"><b id="cdOre">—</b><span>ore</span></div>
+        <div class="conto__blocco"><b id="cdMinuti">—</b><span>minuti</span></div>
+      </div>
+
+      <a class="bottone bottone--chiaro" href="#conferma">Conferma la presenza</a>
+    </div>
+
+    <!-- Sostituisci i file in img/ mantenendo gli stessi nomi -->
+    <div class="galleria">
+      <figure class="foto foto--alta">
+        <img src="img/foto-1.jpg" alt="Ivan e Sofia sulla scalinata di casa" loading="lazy" decoding="async">
+      </figure>
+      <figure class="foto">
+        <img src="img/foto-2.jpg" alt="Ivan e Sofia durante una passeggiata al lago" loading="lazy" decoding="async">
+      </figure>
+      <figure class="foto foto--alta">
+        <img src="img/foto-3.jpg" alt="Le mani di Ivan e Sofia con l'anello di fidanzamento" loading="lazy" decoding="async">
+      </figure>
+    </div>
+  </section>
+
+  <div class="banda" role="presentation"></div>
+
+  <!-- ============ LA GIORNATA ============ -->
+  <section class="sezione" id="giornata">
+    <div class="contenitore">
+      <p class="sopratitolo sopratitolo--scuro">Il programma</p>
+      <h2>Come si svolge la giornata</h2>
+      <p class="introduzione">Tutto si tiene nello stesso posto: una volta arrivati, non serve spostarsi. Gli orari sono indicativi, tranne quello della cerimonia.</p>
+
+      <ol class="programma">
+        <li class="tappa">
+          <span class="tappa__ora">15:00</span>
+          <div class="tappa__testo">
+            <h3>Arrivo degli ospiti</h3>
+            <p>Vi aspettiamo nel giardino all'ingresso. C'è acqua fresca e ombra: prendetevi il tempo per salutare tutti.</p>
+          </div>
+        </li>
+        <li class="tappa">
+          <span class="tappa__ora">15:30</span>
+          <div class="tappa__testo">
+            <h3>Cerimonia</h3>
+            <p>Nel chiostro della villa. Questo è l'unico orario da rispettare, quindi arrivate con qualche minuto di margine.</p>
+          </div>
+        </li>
+        <li class="tappa">
+          <span class="tappa__ora">17:00</span>
+          <div class="tappa__testo">
+            <h3>Aperitivo nel parco</h3>
+            <p>Musica dal vivo e foto di gruppo. Il prato è morbido: se portate tacchi sottili, mettete in borsa un cambio.</p>
+          </div>
+        </li>
+        <li class="tappa">
+          <span class="tappa__ora">19:30</span>
+          <div class="tappa__testo">
+            <h3>Cena</h3>
+            <p>Nella limonaia. I posti sono assegnati e i menù tengono conto delle allergie che ci segnalate nel modulo.</p>
+          </div>
+        </li>
+        <li class="tappa">
+          <span class="tappa__ora">23:00</span>
+          <div class="tappa__testo">
+            <h3>Torta e festa</h3>
+            <p>Si balla fino a tardi. Chi vuole andare via prima trova sempre qualcuno pronto a un passaggio.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ LUOGO E INDICAZIONI ============ -->
+  <section class="sezione sezione--chiara" id="luogo">
+    <div class="contenitore">
+      <p class="sopratitolo sopratitolo--scuro">Il luogo</p>
+      <h2>Villa Castelbarco</h2>
+      <p class="introduzione">Via Castelbarco 3, 20069 Vaprio d'Adda (MI)<br>A 35 km da Milano, 25 km da Bergamo.</p>
+
+      <div class="mappa">
+        <iframe
+          src="https://maps.google.com/maps?q=45.5769,9.5306&hl=it&z=15&output=embed"
+          title="Mappa di Villa Castelbarco a Vaprio d'Adda"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen></iframe>
+      </div>
+
+      <div class="mappa__azioni">
+        <a class="bottone" href="https://www.google.com/maps/dir/?api=1&destination=45.5769,9.5306" target="_blank" rel="noopener">Indicazioni con Google Maps</a>
+        <a class="bottone bottone--vuoto" href="https://maps.apple.com/?daddr=45.5769,9.5306&dirflg=d" target="_blank" rel="noopener">Apri in Apple Mappe</a>
+        <a class="bottone bottone--vuoto" href="https://waze.com/ul?ll=45.5769,9.5306&navigate=yes" target="_blank" rel="noopener">Apri in Waze</a>
+      </div>
+
+      <div class="griglia-info">
+        <article class="scheda">
+          <h3>In auto</h3>
+          <p>Dalla A4 uscita <b>Capriate</b>, poi SP170 verso Vaprio d'Adda: 10 minuti. Dalla Tangenziale Est di Milano prendete la SP2 direzione Cassano d'Adda.</p>
+          <p><b>Parcheggio:</b> gratuito e custodito dentro la proprietà, 120 posti. L'ingresso carrabile è il secondo cancello, quello con il pilastro in mattoni.</p>
+        </article>
+        <article class="scheda">
+          <h3>In treno</h3>
+          <p>Linea <b>S11 Milano–Bergamo</b>, fermata <b>Pozzo d'Adda–Trezzano Rosa</b> (35 minuti da Milano Centrale). Dalla stazione alla villa ci sono 3 km.</p>
+          <p>I taxi non stazionano in zona: se arrivate in treno, scrivetelo nel modulo e vi organizziamo un passaggio.</p>
+        </article>
+        <article class="scheda">
+          <h3>Navetta da Milano</h3>
+          <p>Partenza alle <b>14:00</b> da Piazza Cinque Giornate, ritorno alle <b>00:30</b> e alle <b>02:00</b>. Il posto va prenotato nel modulo di conferma.</p>
+        </article>
+        <article class="scheda">
+          <h3>Dove dormire</h3>
+          <p>Abbiamo tenuto delle camere convenzionate all'<b>Hotel Adda</b> di Trezzo sull'Adda (4 km): citate "matrimonio Ivan e Sofia" quando prenotate.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="banda" role="presentation"></div>
+
+  <!-- ============ CONFERMA PRESENZA ============ -->
+  <section class="sezione" id="conferma">
+    <div class="contenitore contenitore--stretto">
+      <p class="sopratitolo sopratitolo--scuro">Conferma la presenza</p>
+      <h2>Fatecelo sapere entro il 30 aprile 2027</h2>
+      <p class="introduzione">Un modulo per gruppo: chi compila è la persona di riferimento per tutti gli altri. Le allergie servono al catering, quindi sono obbligatorie per ogni invitato.</p>
+
+      <form class="modulo" id="modulo" novalidate>
+
+        <div class="campo">
+          <label for="referente">Nome e cognome della persona di riferimento</label>
+          <input type="text" id="referente" name="Persona di riferimento" autocomplete="name" required>
+          <p class="campo__aiuto">È il nome con cui troviamo il vostro gruppo nella lista.</p>
+        </div>
+
+        <div class="campo-doppio">
+          <div class="campo">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="Email" autocomplete="email" required>
+          </div>
+          <div class="campo">
+            <label for="telefono">Telefono <span class="campo__facoltativo">facoltativo</span></label>
+            <input type="tel" id="telefono" name="Telefono" autocomplete="tel">
+          </div>
+        </div>
+
+        <fieldset class="campo">
+          <legend>Ci sarete?</legend>
+          <div class="scelte">
+            <label class="scelta">
+              <input type="radio" name="Partecipazione" value="Sì, partecipo" id="siPartecipo" required>
+              <span>Sì, ci saremo</span>
+            </label>
+            <label class="scelta">
+              <input type="radio" name="Partecipazione" value="No, non partecipo" id="noPartecipo">
+              <span>Purtroppo non possiamo</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <!-- Mostrato solo se la risposta è sì -->
+        <div id="bloccoPresenti" hidden>
+          <div class="campo">
+            <label for="numeroPersone">Quante persone partecipano, te compreso?</label>
+            <select id="numeroPersone" name="Numero di persone">
+              <option value="1">1 persona</option>
+              <option value="2">2 persone</option>
+              <option value="3">3 persone</option>
+              <option value="4">4 persone</option>
+              <option value="5">5 persone</option>
+              <option value="6">6 persone</option>
+              <option value="7">7 persone</option>
+              <option value="8">8 persone</option>
+            </select>
+          </div>
+
+          <div class="invitati" id="invitati" aria-live="polite"></div>
+
+          <fieldset class="campo">
+            <legend>Navetta da Milano</legend>
+            <div class="scelte">
+              <label class="scelta">
+                <input type="radio" name="Navetta" value="Sì, per tutto il gruppo">
+                <span>Sì, per tutti</span>
+              </label>
+              <label class="scelta">
+                <input type="radio" name="Navetta" value="Solo andata">
+                <span>Solo andata</span>
+              </label>
+              <label class="scelta">
+                <input type="radio" name="Navetta" value="No, arriviamo con mezzi nostri" checked>
+                <span>No, veniamo da soli</span>
+              </label>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="campo">
+          <label for="messaggio">Qualcosa da dirci <span class="campo__facoltativo">facoltativo</span></label>
+          <textarea id="messaggio" name="Messaggio" rows="3" placeholder="Arriviamo in treno, una canzone che non può mancare, un seggiolone per il piccolo…"></textarea>
+        </div>
+
+        <p class="modulo__esito" id="esito" role="status" hidden></p>
+
+        <button class="bottone bottone--pieno" type="submit" id="invia">Invia la conferma</button>
+        <p class="campo__aiuto">Riceverete un riepilogo per email. Se dovete cambiare qualcosa, ricompilate il modulo: vale l'ultima risposta.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ REGALI ============ -->
+  <section class="sezione sezione--scura" id="regali">
+    <div class="contenitore contenitore--stretto">
+      <p class="sopratitolo">Regali</p>
+      <h2>Se volete farci un pensiero</h2>
+      <p class="introduzione introduzione--chiara">La cosa che ci fa più piacere è avervi lì. Chi desidera contribuire può farlo con un bonifico: stiamo mettendo da parte per il viaggio di nozze in Giappone.</p>
+
+      <div class="iban">
+        <p class="iban__etichetta">Intestatari</p>
+        <p class="iban__valore">Ivan Rossi e Sofia Bianchi</p>
+
+        <p class="iban__etichetta">IBAN</p>
+        <p class="iban__valore iban__valore--codice" id="ibanValore">IT60X0542811101000000123456</p>
+
+        <p class="iban__etichetta">Causale</p>
+        <p class="iban__valore">Regalo di nozze — il vostro nome</p>
+
+        <button class="bottone bottone--chiaro" type="button" id="copiaIban" data-iban="IT60X0542811101000000123456">Copia l'IBAN</button>
+        <span class="iban__copiato" id="ibanCopiato" role="status" hidden>Copiato</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="fondo">
+  <div class="contenitore">
+    <p class="fondo__nomi">Ivan &amp; Sofia</p>
+    <p>12 giugno 2027 · Villa Castelbarco, Vaprio d'Adda</p>
+    <p class="fondo__contatti">
+      Per qualsiasi dubbio: <a href="mailto:ivanesofia@example.com">ivanesofia@example.com</a> · <a href="tel:+390000000000">+39 000 000 0000</a>
+    </p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

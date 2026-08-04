@@ -1,0 +1,8 @@
+Metti qui le tue foto con questi nomi esatti:
+
+  foto-1.jpg
+  foto-2.jpg
+  foto-3.jpg
+
+Formato verticale, lato lungo circa 1600 px, meno di 400 KB ciascuna.
+Finche' non ci sono, sul sito compare un rettangolo tratteggiato al loro posto.
