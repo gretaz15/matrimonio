@@ -11,7 +11,7 @@
 <meta property="og:title" content="Ivan & Greta · 24 luglio 2027">
 <meta property="og:description" content="Ci sposiamo! Conferma la tua presenza entro il 30 aprile 2027.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="img/foto-1.jpg">
+<meta property="og:image" content="img/foto-1.jpeg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,12 +19,23 @@
 <link rel="stylesheet" href="style.css">
 </head>
 
-<!-- ▼▼▼ MOTIVO DECORATIVO: cambia SOLO la parola dopo "class" ▼▼▼
-     tema-pigne       pigne e rami d'abete
-     tema-creste      creste di montagna
-     tema-bosco       pigne e funghi
-     tema-scoiattolo  pigne, più lo scoiattolo in tre punti della pagina -->
-<body class="tema-bosco">
+<!-- ▼▼▼ MOTIVO DECORATIVO: si cambia solo qui, nella classe del <body> ▼▼▼
+
+     PRIMA PAROLA — quali figure:
+       tema-pigne       pigne e rami d'abete
+       tema-creste      creste di montagna
+       tema-bosco       pigne, funghi e scoiattoli
+       tema-scoiattolo  scoiattoli, pigne e rami, più la mascotte
+                        in tre punti della pagina
+
+     SECONDA PAROLA — come sono disposte:
+       (niente)         sparse e irregolari, poco dense
+       regolare         la griglia fitta e ordinata della prima versione
+
+     Esempi:  class="tema-bosco"            sparso
+              class="tema-bosco regolare"   a griglia
+              class="tema-creste"           creste sparse -->
+<body class="tema-bosco regolare">
 
 <a class="salta-link" href="#conferma">Vai al modulo di conferma</a>
 
@@ -72,20 +83,51 @@
 
       <a class="bottone bottone--chiaro" href="#conferma">Conferma la presenza</a>
     </div>
+  </section>
 
-    <!-- Sostituisci i file in img/ mantenendo gli stessi nomi -->
-    <div class="galleria">
-      <figure class="foto foto--alta">
-        <img src="img/foto-1.jpg" alt="Ivan e Greta sulla scalinata di casa" loading="lazy" decoding="async">
-      </figure>
-      <figure class="foto">
-        <img src="img/foto-2.jpg" alt="Ivan e Greta durante una passeggiata al lago" loading="lazy" decoding="async">
-      </figure>
-      <figure class="foto foto--alta">
-        <img src="img/foto-3.jpg" alt="Le mani di Ivan e Greta con l'anello di fidanzamento" loading="lazy" decoding="async">
-      </figure>
+  <!-- ============ CAROSELLO FOTO ============
+       Le tre foto hanno formati diversi (una orizzontale, due verticali),
+       quindi non vengono ritagliate: stanno dentro un riquadro quadrato e ci
+       entrano per intero. Le fasce chiare ai lati sono volute, come il bordo
+       di una stampa su carta.
+
+       Per cambiare foto: sostituisci i file in img/ e aggiorna in ogni <li>
+       il src, i due attributi width/height (le dimensioni vere in pixel,
+       servono a non far saltare la pagina durante il caricamento) e l'alt. -->
+  <section class="sezione sezione--foto" aria-labelledby="titolo-noi">
+    <div class="contenitore">
+      <p class="sopratitolo sopratitolo--scuro">Noi due</p>
+      <h2 id="titolo-noi">Qualche nostra foto</h2>
+
+      <div class="carosello" id="carosello">
+        <ul class="carosello__pista" id="carosalloPista" tabindex="0"
+            aria-label="Foto di Ivan e Greta. Scorri in orizzontale o usa le frecce.">
+          <li class="diapositiva">
+            <img src="img/foto-1.jpeg" width="1532" height="2048" loading="lazy" decoding="async"
+                 alt="Ivan e Greta in bicicletta, fermi al centro di un viale sterrato in un parco, con gli alberi che si chiudono sopra di loro.">
+          </li>
+          <li class="diapositiva">
+            <img src="img/foto-2.jpeg" width="2000" height="1500" loading="lazy" decoding="async"
+                 alt="Ivan e Greta sorridono vicini in un primo piano, con gli occhiali da sole e alle spalle grandi rocce di granito sotto il cielo sereno.">
+          </li>
+          <li class="diapositiva">
+            <img src="img/foto-3.jpeg" width="1444" height="1736" loading="lazy" decoding="async"
+                 alt="Ivan bacia Greta su una guancia lungo una strada di montagna, con dietro un vallone verde, i larici e un ghiacciaio.">
+          </li>
+        </ul>
+
+        <button class="carosello__freccia carosello__freccia--prec" type="button" id="fotoPrec" aria-label="Foto precedente">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 4 7 12l8 8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="carosello__freccia carosello__freccia--succ" type="button" id="fotoSucc" aria-label="Foto successiva">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+
+        <div class="carosello__punti" id="fotoPunti"></div>
+      </div>
     </div>
   </section>
+
 
   <div class="banda" role="presentation"></div>
 

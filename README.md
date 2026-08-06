@@ -6,8 +6,12 @@ Sito a pagina singola, senza framework: tre file e una cartella di foto. Si pubb
 index.html    contenuti e testi
 style.css     colori, tipografia, impaginazione
 script.js     countdown, campi invitati, invio del modulo
-img/          le vostre foto (foto-1.jpg, foto-2.jpg, foto-3.jpg)
+img/          le vostre foto (foto-1.jpeg, foto-2.jpeg, foto-3.jpeg)
 ```
+
+Più due file che il sito non usa: `strumenti-motivi.py` rigenera i motivi
+decorativi sparsi e `strumenti-cornice.py` la cornice dell'apertura. Servono
+solo se vuoi cambiarne densità o disposizione, e si possono cancellare.
 
 ---
 
@@ -115,18 +119,48 @@ Da sostituire, in ordine di comparsa:
 ### `style.css` — tema e motivo decorativo
 
 Il tema è **bosco di montagna**. Il motivo decorativo si cambia da `index.html`,
-sostituendo una sola parola nella classe del `<body>`:
+nella classe del `<body>`, e si compone di due parole.
 
-| Classe sul `<body>` | Cosa disegna |
+La prima dice **quali figure**:
+
+| Prima parola | Cosa disegna |
 |---|---|
-| `tema-pigne` | pigne e rami d'abete *(predefinito)* |
-| `tema-creste` | una linea di creste innevate |
-| `tema-bosco` | pigne e funghi alternati |
-| `tema-scoiattolo` | pigne, più uno scoiattolo nel monogramma, in fondo al programma e nel fondo pagina |
+| `tema-pigne` | pigne e rami d'abete |
+| `tema-creste` | creste di montagna innevate |
+| `tema-bosco` | pigne, funghi e scoiattoli |
+| `tema-scoiattolo` | scoiattoli, pigne e rami, più la mascotte nel monogramma, in fondo al programma e nel fondo pagina |
+
+La seconda dice **come sono disposte**:
+
+| Seconda parola | Disposizione |
+|---|---|
+| *niente* | sparse e irregolari, poco dense *(predefinito)* |
+| `regolare` | la griglia fitta e ordinata della prima versione |
+
+Una terza parola facoltativa, `filigrana`, rimette la texture di sfondo
+nell'apertura al posto della cornice. Vedi «La cornice dell'apertura».
+
+Quindi `class="tema-bosco"` dà il bosco sparso e `class="tema-bosco regolare"`
+lo stesso motivo a griglia.
 
 Il motivo compare in due punti: le bande divisorie fra le sezioni e la filigrana
 dietro l'apertura. Sono disegni a una tinta usati come maschera CSS, quindi il
 colore arriva dalla palette e non va toccato dentro l'SVG.
+
+**Come è fatta la casualità.** Una maschera CSS si ripete per forza, quindi non
+esiste il vero caso: è costruito in due modi diversi.
+
+- La **banda** usa una sola tessera larga 1399 px, con le figure distribuite a
+  rumore blu — cioè scegliendo ogni posizione fra molte candidate e tenendo la
+  più lontana dalle altre. Senza questo passaggio venivano grumi e vuoti. A
+  quella larghezza il ciclo non entra in uno schermo.
+- Il **fondo** dell'apertura sovrappone tre livelli di maschera con periodi
+  primi fra loro (331, 397 e 449 px). Il disegno complessivo si ripete solo al
+  loro minimo comune multiplo, cioè oltre 57 milioni di px: in pratica mai.
+
+Le tessere sparse sono generate figura per figura da uno script, non scritte a
+mano: se vuoi cambiarne densità o disposizione conviene rigenerarle. Pesano
+50 KB in chiaro ma circa 3 KB compresse, che è quello che viaggia in rete.
 
 I colori stanno tutti in `:root`, in cima al file:
 
@@ -143,11 +177,114 @@ I colori stanno tutti in `:root`, in cima al file:
 chiaro non ha contrasto sufficiente e il bruno su fondo scuro nemmeno. Se ne usi
 uno al posto dell'altro, il testo diventa poco leggibile.
 
-### `img/`
+### `img/` e il carosello
 
-Tre foto chiamate `foto-1.jpg`, `foto-2.jpg`, `foto-3.jpg`. Formato verticale, lato lungo intorno a 1600 px, sotto i 400 KB ciascuna: le foto pesanti sono la prima causa di siti lenti sul telefono. Finché non le carichi, al loro posto compare un rettangolo tratteggiato.
+Le foto stanno in un carosello, non in una griglia, e **non vengono ritagliate**:
+ognuna entra per intero in un riquadro quadrato, quindi il formato è libero e
+si possono mescliare orizzontali e verticali. Le fasce color carta che restano
+ai lati (o sopra e sotto, per le orizzontali) sono volute.
 
-Ricordati di aggiornare gli `alt`: descrivono la foto a chi non la vede.
+Il quadrato è il compromesso con meno spazio buttato: con un riquadro verticale
+una foto orizzontale perderebbe il 40% di altezza, e viceversa.
+
+Per cambiare foto, in ogni `<li class="diapositiva">` di `index.html` servono
+tre cose:
+
+- **`src`** — attenzione all'estensione: i file attuali sono `.jpeg`, non `.jpg`.
+  Se non corrispondono, la foto non compare e non c'è nessun messaggio d'errore;
+- **`width` e `height`** — le dimensioni vere in pixel. Non servono a
+  dimensionare niente: servono al browser per riservare lo spazio prima che la
+  foto arrivi, così la pagina non salta mentre si carica;
+- **`alt`** — descrive la foto a chi non la vede.
+
+Per aggiungerne o togliere, duplica o cancella un `<li>`: le frecce e i puntini
+si adeguano da soli, li costruisce `script.js` contando le diapositive.
+
+Sul peso: stai sotto i 400 KB per foto. Le foto pesanti sono la prima causa di
+siti lenti sul telefono, ed è da telefono che le guarderanno quasi tutti.
+
+### Lo sfondo dell'apertura
+
+L'apertura ha una fotografia di bosco (`img/sfondo.jpg`) più un **velo verde
+scuro**. Il velo non è decorativo, è necessario: dentro la zona del titolo la
+fotografia va da 0.00 a 0.997 di luminanza, quindi il testo bianco sul sentiero
+chiaro arriverebbe a 1.0:1, cioè invisibile.
+
+La forma del velo segue la fotografia. È un'ellisse alta e stretta, quasi opaca
+nella colonna centrale — che è insieme la parte più chiara dell'immagine e quella
+dove cade il testo — e molto più leggera ai lati, dove stanno funghi, felci e
+scoiattoli, che così restano visibili. Il centro della foto è sfocato e vuoto,
+quindi coprirlo non toglie niente.
+
+Sotto i 620 px il ritaglio si sposta al 26% invece che al centro: su uno schermo
+verticale `cover` mostrerebbe solo la striscia centrale, cioè il sentiero vuoto,
+e sotto il velo resterebbe un verde quasi piatto.
+
+Due dettagli che servono a far tornare i contrasti, da non togliere:
+
+- la targa della data ha un suo velo al 55%. Il nome del luogo è in oro e
+  piccolo, ed era l'unica scritta che non arrivava a 4.5:1;
+- le etichette del countdown sono bianche all'88% e non al 64%. Sul verde pieno
+  il 64% bastava, sulla fotografia scendeva a 2.8:1.
+
+**L'apertura è alta quanto lo schermo** (`min-height: 100svh`) e il contenuto sta
+al centro, così il pulsante di conferma si vede sempre senza scorrere. È
+`min-height` e non `height` perché su uno schermo molto basso l'apertura deve
+poter crescere invece di tagliare il pulsante. Per farci stare tutto:
+
+- i nomi si dimensionano su `min(13vw, 13vh)`, quindi rimpiccioliscono anche in
+  base all'**altezza**: da soli erano la voce che mangiava lo spazio del pulsante;
+- sotto gli 860 px di altezza il ritmo verticale si stringe, e sotto i 600 si
+  riducono anche il corpo delle cifre e il pulsante.
+
+Verificato: entra in una schermata da circa 490 px di altezza in su. Più in basso
+di così (telefono in orizzontale) scorre, che è il comportamento giusto.
+
+### I tre file dello sfondo
+
+| File | Peso | Chi lo usa |
+|---|---|---|
+| `sfondo.png` | 9,9 MB | **nessuno.** È il tuo originale, resta lì intatto |
+| `sfondo.jpg` | 620 KB | schermi sopra i 620 px (2816 px, qualità 40) |
+| `sfondo-telefono.jpg` | 159 KB | schermi fino a 620 px (1200 px, qualità 45) |
+
+La risoluzione conta più della qualità. Su uno schermo retina l'immagine viene
+ingrandita per coprire l'apertura: una versione da 1800 px risultava
+**visibilmente sfocata**, mentre a 2816 px è nitida. La qualità invece può stare
+bassa, perché il velo copre gli artefatti. Il telefono ha un file suo perché non
+gli servono 2816 px e sono 460 KB in meno da scaricare.
+
+Per rigenerarli:
+
+```
+sips -Z 2816 -s format jpeg -s formatOptions 40 img/sfondo.png --out img/sfondo.jpg
+sips -Z 1200 -s format jpeg -s formatOptions 45 img/sfondo.png --out img/sfondo-telefono.jpg
+```
+
+### La cornice dell'apertura
+
+Attorno al titolo c'è una cornice incompleta di funghi, foglie, pigne e
+scoiattoli, con più peso in basso e a sinistra e un centro lasciato libero.
+
+Non è un motivo ripetuto ma una composizione unica, divisa in cinque gruppi
+ancorati ai bordi (`cornice__gruppo--bs`, `--bd`, `--sx`, `--dx`, `--alto`).
+Ogni gruppo è un SVG con il suo `viewBox`: le figure che sporgono dal viewBox
+vengono tagliate, ed è così che alcune sembrano entrare da fuori. Essendo
+gruppi separati e non un'immagine unica, non si stirano a nessuna larghezza:
+si allontanano fra loro sugli schermi larghi, che è esattamente ciò che serve
+a una cornice che deve sembrare incompleta.
+
+Sotto i 560 px restano solo i due gruppi in basso, altrimenti ruberebbero
+spazio al titolo.
+
+`strumenti-cornice.py` rigenera la composizione. Le posizioni sono in fondo al
+file, come liste di `(figura, x, y, rotazione, scala)`; lo script verifica che
+nessuna coppia si sovrapponga e stampa il varco più stretto, così le distanze
+restano controllate e non a occhio.
+
+Di norma l'apertura ha la cornice e nessuna filigrana, perché il centro va
+lasciato pulito. Se preferisci la vecchia texture di sfondo, aggiungi la parola
+`filigrana` alla classe del `<body>`.
 
 ---
 

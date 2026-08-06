@@ -87,7 +87,7 @@ sezioni.forEach((s) => osservatoreNav.observe(s));
 
 /* ---------- 3. Comparsa dei blocchi allo scorrimento ---------- */
 
-document.querySelectorAll(".sezione .contenitore > *, .galleria .foto")
+document.querySelectorAll(".sezione .contenitore > *")
   .forEach((el, i) => {
     el.classList.add("rivela");
     el.style.transitionDelay = (i % 4) * 60 + "ms";
@@ -103,18 +103,79 @@ const osservatoreRivela = new IntersectionObserver((voci, obs) => {
 document.querySelectorAll(".rivela").forEach((el) => osservatoreRivela.observe(el));
 
 
-/* ---------- 4. Segnaposto per le foto mancanti ---------- */
+/* ---------- 4. Carosello delle foto ----------
+   Lo scorrimento è del browser: la pista è un contenitore che scorre in
+   orizzontale con scroll-snap, quindi col dito funziona anche senza questo
+   codice. Qui aggiungiamo solo frecce e puntini, e li teniamo aggiornati
+   leggendo la posizione di scorrimento. Se il JavaScript non parte, il
+   carosello resta comunque usabile. */
 
-const nomiFoto = ["Foto 1", "Foto 2", "Foto 3"];
-document.querySelectorAll(".galleria img").forEach((img, i) => {
-  const segnaposto = () => {
-    const cornice = img.closest(".foto");
-    cornice.classList.add("foto--vuota");
-    cornice.dataset.nome = nomiFoto[i] || "Foto";
+const pista = document.getElementById("carosalloPista");
+
+if (pista) {
+  const diapositive = [...pista.querySelectorAll(".diapositiva")];
+  const prec = document.getElementById("fotoPrec");
+  const succ = document.getElementById("fotoSucc");
+  const contenitorePunti = document.getElementById("fotoPunti");
+
+  const ultima = diapositive.length - 1;
+  let corrente = 0;
+
+  // Frecce e puntini seguono l'indice, non la posizione di scorrimento: lo
+  // scorrimento è morbido e arriva qualche centinaio di millisecondi dopo il
+  // clic, quindi leggendo scrollLeft l'interfaccia resterebbe indietro di un
+  // passo (e la freccia "indietro" resterebbe disattivata).
+  const aggiorna = (i) => {
+    corrente = Math.max(0, Math.min(i, ultima));
+    punti.forEach((b, k) => b.setAttribute("aria-current", String(k === corrente)));
+    prec.disabled = corrente === 0;
+    succ.disabled = corrente === ultima;
   };
-  img.addEventListener("error", segnaposto);
-  if (img.complete && img.naturalWidth === 0) segnaposto();
-});
+
+  const vaA = (i) => {
+    aggiorna(i);
+    const d = diapositive[corrente];
+    if (d) pista.scrollTo({ left: d.offsetLeft - pista.offsetLeft });
+  };
+
+  // quale diapositiva è più vicina al centro: serve per lo scorrimento col dito
+  const indiceVisibile = () => {
+    const centro = pista.scrollLeft + pista.clientWidth / 2;
+    let vicina = 0;
+    let minimo = Infinity;
+    diapositive.forEach((d, i) => {
+      const dist = Math.abs(d.offsetLeft - pista.offsetLeft + d.offsetWidth / 2 - centro);
+      if (dist < minimo) { minimo = dist; vicina = i; }
+    });
+    return vicina;
+  };
+
+  const punti = diapositive.map((_, i) => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "carosello__punto";
+    b.setAttribute("aria-label", `Vai alla foto ${i + 1} di ${diapositive.length}`);
+    b.addEventListener("click", () => vaA(i));
+    contenitorePunti.append(b);
+    return b;
+  });
+
+  prec.addEventListener("click", () => vaA(corrente - 1));
+  succ.addEventListener("click", () => vaA(corrente + 1));
+
+  pista.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight") { e.preventDefault(); vaA(corrente + 1); }
+    if (e.key === "ArrowLeft") { e.preventDefault(); vaA(corrente - 1); }
+  });
+
+  let attesa;
+  pista.addEventListener("scroll", () => {
+    clearTimeout(attesa);
+    attesa = setTimeout(() => aggiorna(indiceVisibile()), 90);
+  }, { passive: true });
+
+  aggiorna(0);
+}
 
 
 /* ---------- 5. Copia dell'IBAN ---------- */
