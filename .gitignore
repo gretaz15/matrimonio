@@ -1,0 +1,7 @@
+# Scarti di macOS: il Finder li crea in ogni cartella che apri, non c'entrano
+# niente col sito. Il pattern senza barra vale a qualsiasi profondità, quindi
+# prende sia ./.DS_Store sia img/.DS_Store.
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
