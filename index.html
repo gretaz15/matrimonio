@@ -86,14 +86,20 @@
   </section>
 
   <!-- ============ CAROSELLO FOTO ============
-       Le tre foto hanno formati diversi (una orizzontale, due verticali),
-       quindi non vengono ritagliate: stanno dentro un riquadro quadrato e ci
-       entrano per intero. Le fasce chiare ai lati sono volute, come il bordo
-       di una stampa su carta.
+       Le foto hanno formati diversi (orizzontali e verticali), quindi non
+       vengono ritagliate: stanno dentro un riquadro quadrato e ci entrano per
+       intero. Le fasce chiare che restano sono volute, come il bordo di una
+       stampa su carta.
 
-       Per cambiare foto: sostituisci i file in img/ e aggiorna in ogni <li>
-       il src, i due attributi width/height (le dimensioni vere in pixel,
-       servono a non far saltare la pagina durante il caricamento) e l'alt. -->
+       Scorre da solo ogni 6 secondi. Si ferma quando ci passi sopra col mouse,
+       quando qualcosa al suo interno prende il fuoco da tastiera, quando esce
+       dallo schermo, e con il pulsante di pausa. Se il sistema chiede meno
+       animazioni, non parte affatto.
+
+       Per aggiungere o togliere una foto basta duplicare o cancellare un <li>:
+       frecce e puntini si adeguano da soli. Servono src, i due attributi
+       width/height (le dimensioni vere in pixel, così la pagina non salta
+       durante il caricamento) e l'alt. -->
   <section class="sezione sezione--foto" aria-labelledby="titolo-noi">
     <div class="contenitore">
       <p class="sopratitolo sopratitolo--scuro">Noi due</p>
@@ -114,6 +120,34 @@
             <img src="img/foto-3.jpeg" width="1444" height="1736" loading="lazy" decoding="async"
                  alt="Ivan bacia Greta su una guancia lungo una strada di montagna, con dietro un vallone verde, i larici e un ghiacciaio.">
           </li>
+          <li class="diapositiva">
+            <img src="img/foto-4.jpeg" width="1232" height="1640" loading="lazy" decoding="async"
+                 alt="Ivan e Greta in un magazzino di stagionatura, in mezzo a due pareti di forme di formaggio che si perdono in fondo al corridoio, con le cuffiette azzurre in testa.">
+          </li>
+          <li class="diapositiva">
+            <img src="img/foto-5.jpeg" width="1500" height="2000" loading="lazy" decoding="async"
+                 alt="Ivan bacia Greta su una guancia dentro un palazzo ottocentesco, fra colonne scolpite e lampadari, mentre lei scatta la foto col telefono.">
+          </li>
+          <li class="diapositiva">
+            <img src="img/foto-6.jpeg" width="1535" height="2048" loading="lazy" decoding="async"
+                 alt="Ivan e Greta abbracciati su una spiaggia di ciottoli bianchi, con il mare turchese alle spalle.">
+          </li>
+          <li class="diapositiva">
+            <img src="img/foto-7.jpeg" width="2048" height="1532" loading="lazy" decoding="async"
+                 alt="Ivan e Greta appoggiati a una staccionata di legno sul bordo di un cratere vulcanico, con la parete di roccia rossastra dietro.">
+          </li>
+          <li class="diapositiva">
+            <img src="img/foto-8.jpeg" width="1196" height="1600" loading="lazy" decoding="async"
+                 alt="Greta con la corona d'alloro e un mazzo di fiori accanto a Ivan in giacca e cravatta, davanti a una torta con la scritta «Dott.ssa in Astrofisica».">
+          </li>
+          <li class="diapositiva">
+            <img src="img/foto-9.jpeg" width="2048" height="1532" loading="lazy" decoding="async"
+                 alt="Ivan e Greta imbacuccati nella neve, con una valle e le cime innevate alle spalle.">
+          </li>
+          <li class="diapositiva">
+            <img src="img/foto-10.jpeg" width="1532" height="2048" loading="lazy" decoding="async"
+                 alt="Ivan e Greta con le giacche rosse su una scogliera battuta dal vento, con l'oceano aperto dietro.">
+          </li>
         </ul>
 
         <button class="carosello__freccia carosello__freccia--prec" type="button" id="fotoPrec" aria-label="Foto precedente">
@@ -123,7 +157,14 @@
           <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
 
-        <div class="carosello__punti" id="fotoPunti"></div>
+        <div class="carosello__comandi">
+          <button class="carosello__pausa" type="button" id="fotoPausa" aria-pressed="false">
+            <svg class="carosello__icona-pausa" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="4" y="3" width="3" height="10" rx="1"/><rect x="9" y="3" width="3" height="10" rx="1"/></svg>
+            <svg class="carosello__icona-avvio" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M5 3.2v9.6l8-4.8z"/></svg>
+            <span id="fotoPausaTesto">Metti in pausa</span>
+          </button>
+          <div class="carosello__punti" id="fotoPunti"></div>
+        </div>
       </div>
     </div>
   </section>

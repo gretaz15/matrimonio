@@ -118,6 +118,9 @@ if (pista) {
   const succ = document.getElementById("fotoSucc");
   const contenitorePunti = document.getElementById("fotoPunti");
 
+  const pulsantePausa = document.getElementById("fotoPausa");
+  const testoPausa = document.getElementById("fotoPausaTesto");
+
   const ultima = diapositive.length - 1;
   let corrente = 0;
 
@@ -126,16 +129,21 @@ if (pista) {
   // clic, quindi leggendo scrollLeft l'interfaccia resterebbe indietro di un
   // passo (e la freccia "indietro" resterebbe disattivata).
   const aggiorna = (i) => {
-    corrente = Math.max(0, Math.min(i, ultima));
+    // gira: dall'ultima si torna alla prima, e viceversa
+    corrente = (i + diapositive.length) % diapositive.length;
     punti.forEach((b, k) => b.setAttribute("aria-current", String(k === corrente)));
-    prec.disabled = corrente === 0;
-    succ.disabled = corrente === ultima;
   };
 
-  const vaA = (i) => {
+  const vaA = (i, istantaneo) => {
+    const precedente = corrente;
     aggiorna(i);
     const d = diapositive[corrente];
-    if (d) pista.scrollTo({ left: d.offsetLeft - pista.offsetLeft });
+    if (!d) return;
+    // Il salto di fine giro attraverserebbe tutte le foto: quello si fa secco.
+    const salto = istantaneo || Math.abs(corrente - precedente) > 1;
+    if (salto) pista.style.scrollBehavior = "auto";
+    pista.scrollTo({ left: d.offsetLeft - pista.offsetLeft });
+    if (salto) requestAnimationFrame(() => { pista.style.scrollBehavior = ""; });
   };
 
   // quale diapositiva è più vicina al centro: serve per lo scorrimento col dito
@@ -155,17 +163,75 @@ if (pista) {
     b.type = "button";
     b.className = "carosello__punto";
     b.setAttribute("aria-label", `Vai alla foto ${i + 1} di ${diapositive.length}`);
-    b.addEventListener("click", () => vaA(i));
+    b.addEventListener("click", () => { vaA(i); riparti(); });
     contenitorePunti.append(b);
     return b;
   });
 
-  prec.addEventListener("click", () => vaA(corrente - 1));
-  succ.addEventListener("click", () => vaA(corrente + 1));
+  /* --- scorrimento automatico ---
+     Sei secondi: il tempo di guardare una foto senza che chi legge il resto
+     della pagina se la ritrovi a cambiare sotto gli occhi.
+
+     Si ferma da solo in quattro casi. Col mouse sopra o col fuoco da tastiera
+     dentro, perché chi sta guardando o navigando non vuole essere interrotto.
+     Quando il carosello esce dallo schermo, per non far lavorare il telefono a
+     vuoto. Col pulsante di pausa, che è una richiesta esplicita e vince su
+     tutto. E non parte affatto se il sistema è impostato per ridurre le
+     animazioni: lì un movimento non richiesto può dare fastidio davvero. */
+  const RITMO = 6000;
+  const menoMovimento = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  let timer = null;
+  let inPausa = false;    // pausa chiesta dall'utente
+  let sospeso = false;    // sospensione temporanea: mouse, fuoco, fuori schermo
+
+  const puoScorrere = () =>
+    diapositive.length > 1 && !inPausa && !sospeso && !menoMovimento.matches;
+
+  const ferma = () => { clearInterval(timer); timer = null; };
+  const parti = () => {
+    if (timer || !puoScorrere()) return;
+    timer = setInterval(() => vaA(corrente + 1), RITMO);
+  };
+  // dopo un'interazione il conto riparte da zero, altrimenti la foto appena
+  // scelta potrebbe cambiare dopo mezzo secondo
+  const riparti = () => { ferma(); parti(); };
+
+  if (pulsantePausa) {
+    pulsantePausa.addEventListener("click", () => {
+      inPausa = !inPausa;
+      pulsantePausa.setAttribute("aria-pressed", String(inPausa));
+      pulsantePausa.classList.toggle("carosello__pausa--fermo", inPausa);
+      testoPausa.textContent = inPausa ? "Riprendi" : "Metti in pausa";
+      if (inPausa) ferma(); else parti();
+    });
+  }
+
+  const sospendi = () => { sospeso = true; ferma(); };
+  const riprendi = () => { sospeso = false; parti(); };
+
+  const carosello = document.getElementById("carosello");
+  carosello.addEventListener("pointerenter", sospendi);
+  carosello.addEventListener("pointerleave", riprendi);
+  carosello.addEventListener("focusin", sospendi);
+  carosello.addEventListener("focusout", (e) => {
+    if (!carosello.contains(e.relatedTarget)) riprendi();
+  });
+
+  new IntersectionObserver((voci) => {
+    voci.forEach((v) => { v.isIntersecting ? riprendi() : sospendi(); });
+  }, { threshold: 0.35 }).observe(carosello);
+
+  menoMovimento.addEventListener("change", () => {
+    if (menoMovimento.matches) ferma(); else parti();
+  });
+
+  prec.addEventListener("click", () => { vaA(corrente - 1); riparti(); });
+  succ.addEventListener("click", () => { vaA(corrente + 1); riparti(); });
 
   pista.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowRight") { e.preventDefault(); vaA(corrente + 1); }
-    if (e.key === "ArrowLeft") { e.preventDefault(); vaA(corrente - 1); }
+    if (e.key === "ArrowRight") { e.preventDefault(); vaA(corrente + 1); riparti(); }
+    if (e.key === "ArrowLeft") { e.preventDefault(); vaA(corrente - 1); riparti(); }
   });
 
   let attesa;
@@ -175,6 +241,7 @@ if (pista) {
   }, { passive: true });
 
   aggiorna(0);
+  if (menoMovimento.matches && pulsantePausa) pulsantePausa.hidden = true;
 }
 
 

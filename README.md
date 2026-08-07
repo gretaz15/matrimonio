@@ -200,8 +200,29 @@ tre cose:
 Per aggiungerne o togliere, duplica o cancella un `<li>`: le frecce e i puntini
 si adeguano da soli, li costruisce `script.js` contando le diapositive.
 
-Sul peso: stai sotto i 400 KB per foto. Le foto pesanti sono la prima causa di
-siti lenti sul telefono, ed è da telefono che le guarderanno quasi tutti.
+**Scorre da solo ogni 6 secondi**, e si ferma in cinque casi: col mouse sopra,
+col fuoco da tastiera dentro, quando esce dallo schermo, col pulsante di pausa,
+e se il sistema è impostato per ridurre le animazioni (lì non parte affatto).
+Il ritmo è la costante `RITMO` in `script.js`.
+
+Il pulsante di pausa non è un ornamento: una cosa che si muove da sola per più
+di cinque secondi deve poter essere fermata, altrimenti diventa un ostacolo per
+chi legge lentamente. Se togli l'automatismo, puoi togliere anche quello.
+
+**Sul peso, un avvertimento.** Le dieci foto pesano **3,7 MB in tutto**, e con
+lo scorrimento automatico prima o poi si scaricano tutte, anche da telefono.
+Sono più grandi del necessario: il riquadro è al massimo 620 px, e quasi tutte
+sono sopra i 1500. Ridimensionandole a 1200 px sul lato lungo si scende intorno
+al megabyte senza differenze visibili:
+
+```
+for f in img/foto-*.jpeg; do
+  sips -Z 1200 -s formatOptions 70 "$f" --out "$f"
+done
+```
+
+Se lo fai, ricordati di aggiornare i `width`/`height` di ogni `<img>`, che
+devono restare le dimensioni vere.
 
 ### Lo sfondo dell'apertura
 
@@ -210,22 +231,34 @@ scuro**. Il velo non è decorativo, è necessario: dentro la zona del titolo la
 fotografia va da 0.00 a 0.997 di luminanza, quindi il testo bianco sul sentiero
 chiaro arriverebbe a 1.0:1, cioè invisibile.
 
-La forma del velo segue la fotografia. È un'ellisse alta e stretta, quasi opaca
-nella colonna centrale — che è insieme la parte più chiara dell'immagine e quella
-dove cade il testo — e molto più leggera ai lati, dove stanno funghi, felci e
-scoiattoli, che così restano visibili. Il centro della foto è sfocato e vuoto,
-quindi coprirlo non toglie niente.
+Il velo è **solo dietro il testo e il pulsante**, non su tutta la sezione: è un
+pannello a opacità uniforme sul blocco `.apertura__contenuto`, con i bordi
+sfumati da un'ombra. Tutt'intorno la fotografia si vede pulita.
+
+Il fatto che l'opacità sia *uniforme* è ciò che rende il contrasto dimostrabile
+invece che sperato. A 0,92 sopra un pixel bianco puro — il caso peggiore
+possibile, qualunque foto ci sia sotto — il fondo diventa `rgb(47,74,63)`, e da
+lì il bianco è a 9,67:1 e l'oro a 4,74:1. Quindi basta che il testo stia dentro
+il pannello, ed è per questo che il pannello è definito dal `padding` del blocco
+e non da scostamenti: così lo contiene per costruzione. Vale anche se un giorno
+cambi fotografia.
+
+Prima ci avevo provato con una sfumatura ovale, ma un'ovale non riesce a coprire
+un blocco di testo largo e basso: gli angoli e la riga in alto ne restavano
+fuori, e su schermo stretto «Ci sposiamo» scendeva a 2,4:1.
 
 Sotto i 620 px il ritaglio si sposta al 26% invece che al centro: su uno schermo
-verticale `cover` mostrerebbe solo la striscia centrale, cioè il sentiero vuoto,
-e sotto il velo resterebbe un verde quasi piatto.
+verticale `cover` mostrerebbe solo la striscia centrale, cioè il sentiero vuoto
+e sfocato, e della fotografia non si vedrebbe la parte che vale — alberi, felci
+e funghi stanno ai lati.
 
-Due dettagli che servono a far tornare i contrasti, da non togliere:
+Due dettagli rimasti dalle versioni precedenti, che ora hanno margine
+abbondante ma non danno fastidio:
 
-- la targa della data ha un suo velo al 55%. Il nome del luogo è in oro e
-  piccolo, ed era l'unica scritta che non arrivava a 4.5:1;
+- la targa della data ha un suo velo al 68%, che sopra il pannello la fa
+  leggere come una targa incisa;
 - le etichette del countdown sono bianche all'88% e non al 64%. Sul verde pieno
-  il 64% bastava, sulla fotografia scendeva a 2.8:1.
+  il 64% bastava, sulla fotografia scendeva a 2,8:1.
 
 **L'apertura è alta quanto lo schermo** (`min-height: 100svh`) e il contenuto sta
 al centro, così il pulsante di conferma si vede sempre senza scorrere. È
