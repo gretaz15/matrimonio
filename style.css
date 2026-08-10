@@ -768,6 +768,12 @@ a { color: var(--bosco); }
     gap: 1rem;
   }
 }
+
+.titolo-raggiungere {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--bosco-tenue);
+}
 .parcheggio {
   display: flex;
   flex-direction: column;
