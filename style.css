@@ -744,8 +744,9 @@ a { color: var(--bosco); }
   margin: 0 0 .5rem;
 }
 .parcheggi__nota {
+  width: 100%;
+  max-width: none;
   margin: 0 0 1.8rem;
-  max-width: 58ch;
   color: var(--testo-tenue);
   font-size: 1rem;
 }
