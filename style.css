@@ -751,8 +751,21 @@ a { color: var(--bosco); }
 }
 .parcheggi__griglia {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.2rem;
+}
+
+@media (max-width: 900px) {
+  .parcheggi__griglia {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  .parcheggi__griglia {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 }
 .parcheggio {
   display: flex;
