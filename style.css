@@ -192,6 +192,12 @@ a { color: var(--bosco); }
   max-width: 58ch;
   margin: 0 0 2.5rem;
 }
+
+#giornata .introduzione {
+  width: 100%;
+  max-width: none;
+}
+
 .introduzione--chiara { color: rgba(255, 255, 255, .8); }
 
 .bottone {
