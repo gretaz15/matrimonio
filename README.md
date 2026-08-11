@@ -273,6 +273,70 @@ poter crescere invece di tagliare il pulsante. Per farci stare tutto:
 Verificato: entra in una schermata da circa 490 px di altezza in su. Più in basso
 di così (telefono in orizzontale) scorre, che è il comportamento giusto.
 
+### Icona e anteprima del link
+
+Sono due cose diverse che si confondono facilmente:
+
+| | Chi la mostra | Da quale tag |
+|---|---|---|
+| **favicon** | la scheda del browser, la schermata home del telefono | `<link rel="icon">` |
+| **anteprima** | WhatsApp, Telegram, i social quando incolli il link | `<meta property="og:image">` |
+
+**WhatsApp non usa il favicon.** L'immagine che compare accanto al link è
+`og:image`, e perché venga mostrata devono valere tre condizioni:
+
+1. **l'indirizzo deve essere assoluto**, con `https://` e dominio. WhatsApp non
+   si trova sul sito quando legge i tag, quindi un percorso relativo come
+   `img/favicon.png` non lo sa risolvere: è il motivo per cui prima compariva
+   un segnaposto e poi spariva tutto;
+2. **il file deve essere leggero.** WhatsApp scarta le immagini troppo pesanti,
+   e il favicon da 6,9 MB non lo guardava nemmeno. `img/anteprima.jpg` sta
+   sotto i 200 KB;
+3. larghezza e altezza dichiarate aiutano a scegliere il riquadro giusto.
+
+Essendo `anteprima.jpg` quadrata, WhatsApp la mette come **miniatura accanto**
+al titolo. Se preferisci il riquadro grande a tutta larghezza, serve
+un'immagine orizzontale intorno a 1200×630, e vanno aggiornati anche
+`og:image:width` e `og:image:height`.
+
+I file, tutti ricavati da `img/favicon.png` (2048×2048, 6,9 MB, che il sito
+**non carica**):
+
+| File | Misura | Uso |
+|---|---|---|
+| `anteprima.jpg` | 800×800, 162 KB | l'anteprima del link |
+| `favicon-32.png` | 32×32 | scheda del browser |
+| `favicon-180.png` | 180×180 | schermata home iOS |
+| `favicon-192.png` | 192×192 | schermata home Android |
+
+Per rigenerarli, ritagliando la tela e la ghirlanda dall'originale:
+
+```
+sips -c 1500 1500 --cropOffset 265 285 img/favicon.png --out /tmp/tela.png
+sips -Z 800 -s format jpeg -s formatOptions 80 /tmp/tela.png --out img/anteprima.jpg
+sips -c 1400 1400 --cropOffset 300 320 img/favicon.png --out /tmp/ghirlanda.png
+for n in 32 180 192; do
+  sips -Z $n /tmp/ghirlanda.png --out img/favicon-$n.png
+done
+```
+
+Due avvertenze pratiche.
+
+**Gli URL sono scritti a mano** dentro `index.html` e valgono solo per
+`ivanqkk.github.io/matrimonio`. Se il sito cambia indirizzo vanno cambiati:
+sono `og:url` e `og:image`.
+
+**WhatsApp tiene in memoria l'anteprima** di ogni indirizzo, anche quella
+sbagliata. Dopo la pubblicazione può continuare a mostrare la vecchia: per
+forzarla, manda una volta il link con qualcosa in coda, per esempio
+`.../matrimonio/?v=2`. Vale come pagina diversa e la rilegge da zero.
+
+**A 16 px la ghirlanda resta pallida**, perché l'originale è un acquerello
+chiaro su bianco: nella scheda del browser si vede un cerchietto tenue. Alle
+misure grandi, quelle della schermata home, viene benissimo. Se preferisci
+un'icona che si stacchi di più servirebbe un disegno pensato per quei pixel,
+per esempio il monogramma in oro su verde.
+
 ### I tre file dello sfondo
 
 | File | Peso | Chi lo usa |

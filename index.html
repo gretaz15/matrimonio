@@ -7,18 +7,42 @@
 <meta name="description" content="Ci sposiamo il 24 luglio 2027 a Toceno, in Val Vigezzo. Qui trovi come arrivare, il programma della giornata e il modulo per confermare la presenza.">
 <meta name="theme-color" content="#1D3A2E">
 
-<!-- Anteprima quando il link viene condiviso su WhatsApp / social -->
-<meta property="og:title" content="Ivan & Greta · 24 luglio 2027">
-<meta property="og:description" content="Ci sposiamo! Conferma la tua presenza entro il 30 aprile 2027.">
+<!-- ANTEPRIMA QUANDO IL LINK VIENE CONDIVISO (WhatsApp, Telegram, social)
+     Tre regole, e prima ne saltavano due:
+
+     1. l'indirizzo dell'immagine DEVE essere assoluto, con https e dominio.
+        WhatsApp non sta sul sito quando legge questi tag, quindi un percorso
+        come "img/favicon.png" non lo sa risolvere e rinuncia;
+     2. l'immagine deve essere leggera. WhatsApp scarta le immagini troppo
+        pesanti: 6,9 MB non le guardava nemmeno. Questa sta sotto i 200 KB;
+     3. dichiarare larghezza e altezza aiuta a mostrare il riquadro grande
+        invece di ripiegare su una miniatura.
+
+     Se un giorno il sito cambia indirizzo, questi quattro URL vanno cambiati. -->
+<meta property="og:url" content="https://ivanqkk.github.io/matrimonio/">
 <meta property="og:type" content="website">
-<meta property="og:image" content="img/favicon.png">
+<meta property="og:site_name" content="Ivan &amp; Greta">
+<meta property="og:locale" content="it_IT">
+<meta property="og:title" content="Ivan &amp; Greta · 24 luglio 2027">
+<meta property="og:description" content="Ci sposiamo! Conferma la tua presenza entro il 30 aprile 2027.">
+<meta property="og:image" content="https://ivanqkk.github.io/matrimonio/img/anteprima.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="800">
+<meta property="og:image:height" content="800">
+<meta property="og:image:alt" content="Ghirlanda di eucalipto e fiori con il monogramma I&amp;G e la data 24 luglio 2027">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- Icona della scheda del browser e della schermata home del telefono.
+     Sono ritagli ridotti di img/favicon.png: quel file è 2048x2048 e pesa
+     6,9 MB, troppo per farlo scaricare a ogni visita solo per un'iconcina. -->
+<link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="img/favicon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="img/favicon-180.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<link rel="icon" type="image/png" href="img/favicon.png">
-   
 </head>
 
 <!-- ▼▼▼ MOTIVO DECORATIVO: si cambia solo qui, nella classe del <body> ▼▼▼
