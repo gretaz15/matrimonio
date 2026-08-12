@@ -198,6 +198,11 @@ a { color: var(--bosco); }
   max-width: none;
 }
 
+#luogo .introduzione {
+  width: 100%;
+  max-width: none;
+}
+
 .introduzione--chiara { color: rgba(255, 255, 255, .8); }
 
 .bottone {
